@@ -1,4 +1,4 @@
-/* build1401v1
+/*build1401v2
  * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
  * This devtool is neither made for production nor for readable output files.
  * It uses "eval()" calls to create a separate source file in the browser devtools.
@@ -396,6 +396,26 @@ eval("var getNative = __webpack_require__(/*! ./_getNative */ \"./node_modules/l
 
 /***/ }),
 
+/***/ "./node_modules/lodash/_SetCache.js":
+/*!******************************************!*\
+  !*** ./node_modules/lodash/_SetCache.js ***!
+  \******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var MapCache = __webpack_require__(/*! ./_MapCache */ \"./node_modules/lodash/_MapCache.js\"),\n    setCacheAdd = __webpack_require__(/*! ./_setCacheAdd */ \"./node_modules/lodash/_setCacheAdd.js\"),\n    setCacheHas = __webpack_require__(/*! ./_setCacheHas */ \"./node_modules/lodash/_setCacheHas.js\");\n\n/**\n *\n * Creates an array cache object to store unique values.\n *\n * @private\n * @constructor\n * @param {Array} [values] The values to cache.\n */\nfunction SetCache(values) {\n  var index = -1,\n      length = values == null ? 0 : values.length;\n\n  this.__data__ = new MapCache;\n  while (++index < length) {\n    this.add(values[index]);\n  }\n}\n\n// Add methods to `SetCache`.\nSetCache.prototype.add = SetCache.prototype.push = setCacheAdd;\nSetCache.prototype.has = setCacheHas;\n\nmodule.exports = SetCache;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_SetCache.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_Stack.js":
+/*!***************************************!*\
+  !*** ./node_modules/lodash/_Stack.js ***!
+  \***************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var ListCache = __webpack_require__(/*! ./_ListCache */ \"./node_modules/lodash/_ListCache.js\"),\n    stackClear = __webpack_require__(/*! ./_stackClear */ \"./node_modules/lodash/_stackClear.js\"),\n    stackDelete = __webpack_require__(/*! ./_stackDelete */ \"./node_modules/lodash/_stackDelete.js\"),\n    stackGet = __webpack_require__(/*! ./_stackGet */ \"./node_modules/lodash/_stackGet.js\"),\n    stackHas = __webpack_require__(/*! ./_stackHas */ \"./node_modules/lodash/_stackHas.js\"),\n    stackSet = __webpack_require__(/*! ./_stackSet */ \"./node_modules/lodash/_stackSet.js\");\n\n/**\n * Creates a stack cache object to store key-value pairs.\n *\n * @private\n * @constructor\n * @param {Array} [entries] The key-value pairs to cache.\n */\nfunction Stack(entries) {\n  var data = this.__data__ = new ListCache(entries);\n  this.size = data.size;\n}\n\n// Add methods to `Stack`.\nStack.prototype.clear = stackClear;\nStack.prototype['delete'] = stackDelete;\nStack.prototype.get = stackGet;\nStack.prototype.has = stackHas;\nStack.prototype.set = stackSet;\n\nmodule.exports = Stack;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_Stack.js?");
+
+/***/ }),
+
 /***/ "./node_modules/lodash/_Symbol.js":
 /*!****************************************!*\
   !*** ./node_modules/lodash/_Symbol.js ***!
@@ -403,6 +423,16 @@ eval("var getNative = __webpack_require__(/*! ./_getNative */ \"./node_modules/l
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 eval("var root = __webpack_require__(/*! ./_root */ \"./node_modules/lodash/_root.js\");\n\n/** Built-in value references. */\nvar Symbol = root.Symbol;\n\nmodule.exports = Symbol;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_Symbol.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_Uint8Array.js":
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_Uint8Array.js ***!
+  \********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var root = __webpack_require__(/*! ./_root */ \"./node_modules/lodash/_root.js\");\n\n/** Built-in value references. */\nvar Uint8Array = root.Uint8Array;\n\nmodule.exports = Uint8Array;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_Uint8Array.js?");
 
 /***/ }),
 
@@ -416,6 +446,46 @@ eval("var getNative = __webpack_require__(/*! ./_getNative */ \"./node_modules/l
 
 /***/ }),
 
+/***/ "./node_modules/lodash/_arrayFilter.js":
+/*!*********************************************!*\
+  !*** ./node_modules/lodash/_arrayFilter.js ***!
+  \*********************************************/
+/***/ ((module) => {
+
+eval("/**\n * A specialized version of `_.filter` for arrays without support for\n * iteratee shorthands.\n *\n * @private\n * @param {Array} [array] The array to iterate over.\n * @param {Function} predicate The function invoked per iteration.\n * @returns {Array} Returns the new filtered array.\n */\nfunction arrayFilter(array, predicate) {\n  var index = -1,\n      length = array == null ? 0 : array.length,\n      resIndex = 0,\n      result = [];\n\n  while (++index < length) {\n    var value = array[index];\n    if (predicate(value, index, array)) {\n      result[resIndex++] = value;\n    }\n  }\n  return result;\n}\n\nmodule.exports = arrayFilter;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_arrayFilter.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_arrayIncludes.js":
+/*!***********************************************!*\
+  !*** ./node_modules/lodash/_arrayIncludes.js ***!
+  \***********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var baseIndexOf = __webpack_require__(/*! ./_baseIndexOf */ \"./node_modules/lodash/_baseIndexOf.js\");\n\n/**\n * A specialized version of `_.includes` for arrays without support for\n * specifying an index to search from.\n *\n * @private\n * @param {Array} [array] The array to inspect.\n * @param {*} target The value to search for.\n * @returns {boolean} Returns `true` if `target` is found, else `false`.\n */\nfunction arrayIncludes(array, value) {\n  var length = array == null ? 0 : array.length;\n  return !!length && baseIndexOf(array, value, 0) > -1;\n}\n\nmodule.exports = arrayIncludes;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_arrayIncludes.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_arrayIncludesWith.js":
+/*!***************************************************!*\
+  !*** ./node_modules/lodash/_arrayIncludesWith.js ***!
+  \***************************************************/
+/***/ ((module) => {
+
+eval("/**\n * This function is like `arrayIncludes` except that it accepts a comparator.\n *\n * @private\n * @param {Array} [array] The array to inspect.\n * @param {*} target The value to search for.\n * @param {Function} comparator The comparator invoked per element.\n * @returns {boolean} Returns `true` if `target` is found, else `false`.\n */\nfunction arrayIncludesWith(array, value, comparator) {\n  var index = -1,\n      length = array == null ? 0 : array.length;\n\n  while (++index < length) {\n    if (comparator(value, array[index])) {\n      return true;\n    }\n  }\n  return false;\n}\n\nmodule.exports = arrayIncludesWith;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_arrayIncludesWith.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_arrayLikeKeys.js":
+/*!***********************************************!*\
+  !*** ./node_modules/lodash/_arrayLikeKeys.js ***!
+  \***********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var baseTimes = __webpack_require__(/*! ./_baseTimes */ \"./node_modules/lodash/_baseTimes.js\"),\n    isArguments = __webpack_require__(/*! ./isArguments */ \"./node_modules/lodash/isArguments.js\"),\n    isArray = __webpack_require__(/*! ./isArray */ \"./node_modules/lodash/isArray.js\"),\n    isBuffer = __webpack_require__(/*! ./isBuffer */ \"./node_modules/lodash/isBuffer.js\"),\n    isIndex = __webpack_require__(/*! ./_isIndex */ \"./node_modules/lodash/_isIndex.js\"),\n    isTypedArray = __webpack_require__(/*! ./isTypedArray */ \"./node_modules/lodash/isTypedArray.js\");\n\n/** Used for built-in method references. */\nvar objectProto = Object.prototype;\n\n/** Used to check objects for own properties. */\nvar hasOwnProperty = objectProto.hasOwnProperty;\n\n/**\n * Creates an array of the enumerable property names of the array-like `value`.\n *\n * @private\n * @param {*} value The value to query.\n * @param {boolean} inherited Specify returning inherited property names.\n * @returns {Array} Returns the array of property names.\n */\nfunction arrayLikeKeys(value, inherited) {\n  var isArr = isArray(value),\n      isArg = !isArr && isArguments(value),\n      isBuff = !isArr && !isArg && isBuffer(value),\n      isType = !isArr && !isArg && !isBuff && isTypedArray(value),\n      skipIndexes = isArr || isArg || isBuff || isType,\n      result = skipIndexes ? baseTimes(value.length, String) : [],\n      length = result.length;\n\n  for (var key in value) {\n    if ((inherited || hasOwnProperty.call(value, key)) &&\n        !(skipIndexes && (\n           // Safari 9 has enumerable `arguments.length` in strict mode.\n           key == 'length' ||\n           // Node.js 0.10 has enumerable non-index properties on buffers.\n           (isBuff && (key == 'offset' || key == 'parent')) ||\n           // PhantomJS 2 has enumerable non-index properties on typed arrays.\n           (isType && (key == 'buffer' || key == 'byteLength' || key == 'byteOffset')) ||\n           // Skip index properties.\n           isIndex(key, length)\n        ))) {\n      result.push(key);\n    }\n  }\n  return result;\n}\n\nmodule.exports = arrayLikeKeys;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_arrayLikeKeys.js?");
+
+/***/ }),
+
 /***/ "./node_modules/lodash/_arrayMap.js":
 /*!******************************************!*\
   !*** ./node_modules/lodash/_arrayMap.js ***!
@@ -423,6 +493,26 @@ eval("var getNative = __webpack_require__(/*! ./_getNative */ \"./node_modules/l
 /***/ ((module) => {
 
 eval("/**\n * A specialized version of `_.map` for arrays without support for iteratee\n * shorthands.\n *\n * @private\n * @param {Array} [array] The array to iterate over.\n * @param {Function} iteratee The function invoked per iteration.\n * @returns {Array} Returns the new mapped array.\n */\nfunction arrayMap(array, iteratee) {\n  var index = -1,\n      length = array == null ? 0 : array.length,\n      result = Array(length);\n\n  while (++index < length) {\n    result[index] = iteratee(array[index], index, array);\n  }\n  return result;\n}\n\nmodule.exports = arrayMap;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_arrayMap.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_arrayPush.js":
+/*!*******************************************!*\
+  !*** ./node_modules/lodash/_arrayPush.js ***!
+  \*******************************************/
+/***/ ((module) => {
+
+eval("/**\n * Appends the elements of `values` to `array`.\n *\n * @private\n * @param {Array} array The array to modify.\n * @param {Array} values The values to append.\n * @returns {Array} Returns `array`.\n */\nfunction arrayPush(array, values) {\n  var index = -1,\n      length = values.length,\n      offset = array.length;\n\n  while (++index < length) {\n    array[offset + index] = values[index];\n  }\n  return array;\n}\n\nmodule.exports = arrayPush;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_arrayPush.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_arraySome.js":
+/*!*******************************************!*\
+  !*** ./node_modules/lodash/_arraySome.js ***!
+  \*******************************************/
+/***/ ((module) => {
+
+eval("/**\n * A specialized version of `_.some` for arrays without support for iteratee\n * shorthands.\n *\n * @private\n * @param {Array} [array] The array to iterate over.\n * @param {Function} predicate The function invoked per iteration.\n * @returns {boolean} Returns `true` if any element passes the predicate check,\n *  else `false`.\n */\nfunction arraySome(array, predicate) {\n  var index = -1,\n      length = array == null ? 0 : array.length;\n\n  while (++index < length) {\n    if (predicate(array[index], index, array)) {\n      return true;\n    }\n  }\n  return false;\n}\n\nmodule.exports = arraySome;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_arraySome.js?");
 
 /***/ }),
 
@@ -436,6 +526,16 @@ eval("var eq = __webpack_require__(/*! ./eq */ \"./node_modules/lodash/eq.js\");
 
 /***/ }),
 
+/***/ "./node_modules/lodash/_baseFindIndex.js":
+/*!***********************************************!*\
+  !*** ./node_modules/lodash/_baseFindIndex.js ***!
+  \***********************************************/
+/***/ ((module) => {
+
+eval("/**\n * The base implementation of `_.findIndex` and `_.findLastIndex` without\n * support for iteratee shorthands.\n *\n * @private\n * @param {Array} array The array to inspect.\n * @param {Function} predicate The function invoked per iteration.\n * @param {number} fromIndex The index to search from.\n * @param {boolean} [fromRight] Specify iterating from right to left.\n * @returns {number} Returns the index of the matched value, else `-1`.\n */\nfunction baseFindIndex(array, predicate, fromIndex, fromRight) {\n  var length = array.length,\n      index = fromIndex + (fromRight ? 1 : -1);\n\n  while ((fromRight ? index-- : ++index < length)) {\n    if (predicate(array[index], index, array)) {\n      return index;\n    }\n  }\n  return -1;\n}\n\nmodule.exports = baseFindIndex;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_baseFindIndex.js?");
+
+/***/ }),
+
 /***/ "./node_modules/lodash/_baseGet.js":
 /*!*****************************************!*\
   !*** ./node_modules/lodash/_baseGet.js ***!
@@ -443,6 +543,16 @@ eval("var eq = __webpack_require__(/*! ./eq */ \"./node_modules/lodash/eq.js\");
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 eval("var castPath = __webpack_require__(/*! ./_castPath */ \"./node_modules/lodash/_castPath.js\"),\n    toKey = __webpack_require__(/*! ./_toKey */ \"./node_modules/lodash/_toKey.js\");\n\n/**\n * The base implementation of `_.get` without support for default values.\n *\n * @private\n * @param {Object} object The object to query.\n * @param {Array|string} path The path of the property to get.\n * @returns {*} Returns the resolved value.\n */\nfunction baseGet(object, path) {\n  path = castPath(path, object);\n\n  var index = 0,\n      length = path.length;\n\n  while (object != null && index < length) {\n    object = object[toKey(path[index++])];\n  }\n  return (index && index == length) ? object : undefined;\n}\n\nmodule.exports = baseGet;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_baseGet.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_baseGetAllKeys.js":
+/*!************************************************!*\
+  !*** ./node_modules/lodash/_baseGetAllKeys.js ***!
+  \************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var arrayPush = __webpack_require__(/*! ./_arrayPush */ \"./node_modules/lodash/_arrayPush.js\"),\n    isArray = __webpack_require__(/*! ./isArray */ \"./node_modules/lodash/isArray.js\");\n\n/**\n * The base implementation of `getAllKeys` and `getAllKeysIn` which uses\n * `keysFunc` and `symbolsFunc` to get the enumerable property names and\n * symbols of `object`.\n *\n * @private\n * @param {Object} object The object to query.\n * @param {Function} keysFunc The function to get the keys of `object`.\n * @param {Function} symbolsFunc The function to get the symbols of `object`.\n * @returns {Array} Returns the array of property names and symbols.\n */\nfunction baseGetAllKeys(object, keysFunc, symbolsFunc) {\n  var result = keysFunc(object);\n  return isArray(object) ? result : arrayPush(result, symbolsFunc(object));\n}\n\nmodule.exports = baseGetAllKeys;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_baseGetAllKeys.js?");
 
 /***/ }),
 
@@ -456,6 +566,26 @@ eval("var Symbol = __webpack_require__(/*! ./_Symbol */ \"./node_modules/lodash/
 
 /***/ }),
 
+/***/ "./node_modules/lodash/_baseHasIn.js":
+/*!*******************************************!*\
+  !*** ./node_modules/lodash/_baseHasIn.js ***!
+  \*******************************************/
+/***/ ((module) => {
+
+eval("/**\n * The base implementation of `_.hasIn` without support for deep paths.\n *\n * @private\n * @param {Object} [object] The object to query.\n * @param {Array|string} key The key to check.\n * @returns {boolean} Returns `true` if `key` exists, else `false`.\n */\nfunction baseHasIn(object, key) {\n  return object != null && key in Object(object);\n}\n\nmodule.exports = baseHasIn;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_baseHasIn.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_baseIndexOf.js":
+/*!*********************************************!*\
+  !*** ./node_modules/lodash/_baseIndexOf.js ***!
+  \*********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var baseFindIndex = __webpack_require__(/*! ./_baseFindIndex */ \"./node_modules/lodash/_baseFindIndex.js\"),\n    baseIsNaN = __webpack_require__(/*! ./_baseIsNaN */ \"./node_modules/lodash/_baseIsNaN.js\"),\n    strictIndexOf = __webpack_require__(/*! ./_strictIndexOf */ \"./node_modules/lodash/_strictIndexOf.js\");\n\n/**\n * The base implementation of `_.indexOf` without `fromIndex` bounds checks.\n *\n * @private\n * @param {Array} array The array to inspect.\n * @param {*} value The value to search for.\n * @param {number} fromIndex The index to search from.\n * @returns {number} Returns the index of the matched value, else `-1`.\n */\nfunction baseIndexOf(array, value, fromIndex) {\n  return value === value\n    ? strictIndexOf(array, value, fromIndex)\n    : baseFindIndex(array, baseIsNaN, fromIndex);\n}\n\nmodule.exports = baseIndexOf;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_baseIndexOf.js?");
+
+/***/ }),
+
 /***/ "./node_modules/lodash/_baseIsArguments.js":
 /*!*************************************************!*\
   !*** ./node_modules/lodash/_baseIsArguments.js ***!
@@ -463,6 +593,46 @@ eval("var Symbol = __webpack_require__(/*! ./_Symbol */ \"./node_modules/lodash/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 eval("var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ \"./node_modules/lodash/_baseGetTag.js\"),\n    isObjectLike = __webpack_require__(/*! ./isObjectLike */ \"./node_modules/lodash/isObjectLike.js\");\n\n/** `Object#toString` result references. */\nvar argsTag = '[object Arguments]';\n\n/**\n * The base implementation of `_.isArguments`.\n *\n * @private\n * @param {*} value The value to check.\n * @returns {boolean} Returns `true` if `value` is an `arguments` object,\n */\nfunction baseIsArguments(value) {\n  return isObjectLike(value) && baseGetTag(value) == argsTag;\n}\n\nmodule.exports = baseIsArguments;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_baseIsArguments.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_baseIsEqual.js":
+/*!*********************************************!*\
+  !*** ./node_modules/lodash/_baseIsEqual.js ***!
+  \*********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var baseIsEqualDeep = __webpack_require__(/*! ./_baseIsEqualDeep */ \"./node_modules/lodash/_baseIsEqualDeep.js\"),\n    isObjectLike = __webpack_require__(/*! ./isObjectLike */ \"./node_modules/lodash/isObjectLike.js\");\n\n/**\n * The base implementation of `_.isEqual` which supports partial comparisons\n * and tracks traversed objects.\n *\n * @private\n * @param {*} value The value to compare.\n * @param {*} other The other value to compare.\n * @param {boolean} bitmask The bitmask flags.\n *  1 - Unordered comparison\n *  2 - Partial comparison\n * @param {Function} [customizer] The function to customize comparisons.\n * @param {Object} [stack] Tracks traversed `value` and `other` objects.\n * @returns {boolean} Returns `true` if the values are equivalent, else `false`.\n */\nfunction baseIsEqual(value, other, bitmask, customizer, stack) {\n  if (value === other) {\n    return true;\n  }\n  if (value == null || other == null || (!isObjectLike(value) && !isObjectLike(other))) {\n    return value !== value && other !== other;\n  }\n  return baseIsEqualDeep(value, other, bitmask, customizer, baseIsEqual, stack);\n}\n\nmodule.exports = baseIsEqual;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_baseIsEqual.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_baseIsEqualDeep.js":
+/*!*************************************************!*\
+  !*** ./node_modules/lodash/_baseIsEqualDeep.js ***!
+  \*************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var Stack = __webpack_require__(/*! ./_Stack */ \"./node_modules/lodash/_Stack.js\"),\n    equalArrays = __webpack_require__(/*! ./_equalArrays */ \"./node_modules/lodash/_equalArrays.js\"),\n    equalByTag = __webpack_require__(/*! ./_equalByTag */ \"./node_modules/lodash/_equalByTag.js\"),\n    equalObjects = __webpack_require__(/*! ./_equalObjects */ \"./node_modules/lodash/_equalObjects.js\"),\n    getTag = __webpack_require__(/*! ./_getTag */ \"./node_modules/lodash/_getTag.js\"),\n    isArray = __webpack_require__(/*! ./isArray */ \"./node_modules/lodash/isArray.js\"),\n    isBuffer = __webpack_require__(/*! ./isBuffer */ \"./node_modules/lodash/isBuffer.js\"),\n    isTypedArray = __webpack_require__(/*! ./isTypedArray */ \"./node_modules/lodash/isTypedArray.js\");\n\n/** Used to compose bitmasks for value comparisons. */\nvar COMPARE_PARTIAL_FLAG = 1;\n\n/** `Object#toString` result references. */\nvar argsTag = '[object Arguments]',\n    arrayTag = '[object Array]',\n    objectTag = '[object Object]';\n\n/** Used for built-in method references. */\nvar objectProto = Object.prototype;\n\n/** Used to check objects for own properties. */\nvar hasOwnProperty = objectProto.hasOwnProperty;\n\n/**\n * A specialized version of `baseIsEqual` for arrays and objects which performs\n * deep comparisons and tracks traversed objects enabling objects with circular\n * references to be compared.\n *\n * @private\n * @param {Object} object The object to compare.\n * @param {Object} other The other object to compare.\n * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.\n * @param {Function} customizer The function to customize comparisons.\n * @param {Function} equalFunc The function to determine equivalents of values.\n * @param {Object} [stack] Tracks traversed `object` and `other` objects.\n * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.\n */\nfunction baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {\n  var objIsArr = isArray(object),\n      othIsArr = isArray(other),\n      objTag = objIsArr ? arrayTag : getTag(object),\n      othTag = othIsArr ? arrayTag : getTag(other);\n\n  objTag = objTag == argsTag ? objectTag : objTag;\n  othTag = othTag == argsTag ? objectTag : othTag;\n\n  var objIsObj = objTag == objectTag,\n      othIsObj = othTag == objectTag,\n      isSameTag = objTag == othTag;\n\n  if (isSameTag && isBuffer(object)) {\n    if (!isBuffer(other)) {\n      return false;\n    }\n    objIsArr = true;\n    objIsObj = false;\n  }\n  if (isSameTag && !objIsObj) {\n    stack || (stack = new Stack);\n    return (objIsArr || isTypedArray(object))\n      ? equalArrays(object, other, bitmask, customizer, equalFunc, stack)\n      : equalByTag(object, other, objTag, bitmask, customizer, equalFunc, stack);\n  }\n  if (!(bitmask & COMPARE_PARTIAL_FLAG)) {\n    var objIsWrapped = objIsObj && hasOwnProperty.call(object, '__wrapped__'),\n        othIsWrapped = othIsObj && hasOwnProperty.call(other, '__wrapped__');\n\n    if (objIsWrapped || othIsWrapped) {\n      var objUnwrapped = objIsWrapped ? object.value() : object,\n          othUnwrapped = othIsWrapped ? other.value() : other;\n\n      stack || (stack = new Stack);\n      return equalFunc(objUnwrapped, othUnwrapped, bitmask, customizer, stack);\n    }\n  }\n  if (!isSameTag) {\n    return false;\n  }\n  stack || (stack = new Stack);\n  return equalObjects(object, other, bitmask, customizer, equalFunc, stack);\n}\n\nmodule.exports = baseIsEqualDeep;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_baseIsEqualDeep.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_baseIsMatch.js":
+/*!*********************************************!*\
+  !*** ./node_modules/lodash/_baseIsMatch.js ***!
+  \*********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var Stack = __webpack_require__(/*! ./_Stack */ \"./node_modules/lodash/_Stack.js\"),\n    baseIsEqual = __webpack_require__(/*! ./_baseIsEqual */ \"./node_modules/lodash/_baseIsEqual.js\");\n\n/** Used to compose bitmasks for value comparisons. */\nvar COMPARE_PARTIAL_FLAG = 1,\n    COMPARE_UNORDERED_FLAG = 2;\n\n/**\n * The base implementation of `_.isMatch` without support for iteratee shorthands.\n *\n * @private\n * @param {Object} object The object to inspect.\n * @param {Object} source The object of property values to match.\n * @param {Array} matchData The property names, values, and compare flags to match.\n * @param {Function} [customizer] The function to customize comparisons.\n * @returns {boolean} Returns `true` if `object` is a match, else `false`.\n */\nfunction baseIsMatch(object, source, matchData, customizer) {\n  var index = matchData.length,\n      length = index,\n      noCustomizer = !customizer;\n\n  if (object == null) {\n    return !length;\n  }\n  object = Object(object);\n  while (index--) {\n    var data = matchData[index];\n    if ((noCustomizer && data[2])\n          ? data[1] !== object[data[0]]\n          : !(data[0] in object)\n        ) {\n      return false;\n    }\n  }\n  while (++index < length) {\n    data = matchData[index];\n    var key = data[0],\n        objValue = object[key],\n        srcValue = data[1];\n\n    if (noCustomizer && data[2]) {\n      if (objValue === undefined && !(key in object)) {\n        return false;\n      }\n    } else {\n      var stack = new Stack;\n      if (customizer) {\n        var result = customizer(objValue, srcValue, key, object, source, stack);\n      }\n      if (!(result === undefined\n            ? baseIsEqual(srcValue, objValue, COMPARE_PARTIAL_FLAG | COMPARE_UNORDERED_FLAG, customizer, stack)\n            : result\n          )) {\n        return false;\n      }\n    }\n  }\n  return true;\n}\n\nmodule.exports = baseIsMatch;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_baseIsMatch.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_baseIsNaN.js":
+/*!*******************************************!*\
+  !*** ./node_modules/lodash/_baseIsNaN.js ***!
+  \*******************************************/
+/***/ ((module) => {
+
+eval("/**\n * The base implementation of `_.isNaN` without support for number objects.\n *\n * @private\n * @param {*} value The value to check.\n * @returns {boolean} Returns `true` if `value` is `NaN`, else `false`.\n */\nfunction baseIsNaN(value) {\n  return value !== value;\n}\n\nmodule.exports = baseIsNaN;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_baseIsNaN.js?");
 
 /***/ }),
 
@@ -486,6 +656,16 @@ eval("var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ \"./node_modules
 
 /***/ }),
 
+/***/ "./node_modules/lodash/_baseIteratee.js":
+/*!**********************************************!*\
+  !*** ./node_modules/lodash/_baseIteratee.js ***!
+  \**********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var baseMatches = __webpack_require__(/*! ./_baseMatches */ \"./node_modules/lodash/_baseMatches.js\"),\n    baseMatchesProperty = __webpack_require__(/*! ./_baseMatchesProperty */ \"./node_modules/lodash/_baseMatchesProperty.js\"),\n    identity = __webpack_require__(/*! ./identity */ \"./node_modules/lodash/identity.js\"),\n    isArray = __webpack_require__(/*! ./isArray */ \"./node_modules/lodash/isArray.js\"),\n    property = __webpack_require__(/*! ./property */ \"./node_modules/lodash/property.js\");\n\n/**\n * The base implementation of `_.iteratee`.\n *\n * @private\n * @param {*} [value=_.identity] The value to convert to an iteratee.\n * @returns {Function} Returns the iteratee.\n */\nfunction baseIteratee(value) {\n  // Don't store the `typeof` result in a variable to avoid a JIT bug in Safari 9.\n  // See https://bugs.webkit.org/show_bug.cgi?id=156034 for more details.\n  if (typeof value == 'function') {\n    return value;\n  }\n  if (value == null) {\n    return identity;\n  }\n  if (typeof value == 'object') {\n    return isArray(value)\n      ? baseMatchesProperty(value[0], value[1])\n      : baseMatches(value);\n  }\n  return property(value);\n}\n\nmodule.exports = baseIteratee;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_baseIteratee.js?");
+
+/***/ }),
+
 /***/ "./node_modules/lodash/_baseKeys.js":
 /*!******************************************!*\
   !*** ./node_modules/lodash/_baseKeys.js ***!
@@ -493,6 +673,56 @@ eval("var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ \"./node_modules
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 eval("var isPrototype = __webpack_require__(/*! ./_isPrototype */ \"./node_modules/lodash/_isPrototype.js\"),\n    nativeKeys = __webpack_require__(/*! ./_nativeKeys */ \"./node_modules/lodash/_nativeKeys.js\");\n\n/** Used for built-in method references. */\nvar objectProto = Object.prototype;\n\n/** Used to check objects for own properties. */\nvar hasOwnProperty = objectProto.hasOwnProperty;\n\n/**\n * The base implementation of `_.keys` which doesn't treat sparse arrays as dense.\n *\n * @private\n * @param {Object} object The object to query.\n * @returns {Array} Returns the array of property names.\n */\nfunction baseKeys(object) {\n  if (!isPrototype(object)) {\n    return nativeKeys(object);\n  }\n  var result = [];\n  for (var key in Object(object)) {\n    if (hasOwnProperty.call(object, key) && key != 'constructor') {\n      result.push(key);\n    }\n  }\n  return result;\n}\n\nmodule.exports = baseKeys;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_baseKeys.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_baseMatches.js":
+/*!*********************************************!*\
+  !*** ./node_modules/lodash/_baseMatches.js ***!
+  \*********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var baseIsMatch = __webpack_require__(/*! ./_baseIsMatch */ \"./node_modules/lodash/_baseIsMatch.js\"),\n    getMatchData = __webpack_require__(/*! ./_getMatchData */ \"./node_modules/lodash/_getMatchData.js\"),\n    matchesStrictComparable = __webpack_require__(/*! ./_matchesStrictComparable */ \"./node_modules/lodash/_matchesStrictComparable.js\");\n\n/**\n * The base implementation of `_.matches` which doesn't clone `source`.\n *\n * @private\n * @param {Object} source The object of property values to match.\n * @returns {Function} Returns the new spec function.\n */\nfunction baseMatches(source) {\n  var matchData = getMatchData(source);\n  if (matchData.length == 1 && matchData[0][2]) {\n    return matchesStrictComparable(matchData[0][0], matchData[0][1]);\n  }\n  return function(object) {\n    return object === source || baseIsMatch(object, source, matchData);\n  };\n}\n\nmodule.exports = baseMatches;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_baseMatches.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_baseMatchesProperty.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/lodash/_baseMatchesProperty.js ***!
+  \*****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var baseIsEqual = __webpack_require__(/*! ./_baseIsEqual */ \"./node_modules/lodash/_baseIsEqual.js\"),\n    get = __webpack_require__(/*! ./get */ \"./node_modules/lodash/get.js\"),\n    hasIn = __webpack_require__(/*! ./hasIn */ \"./node_modules/lodash/hasIn.js\"),\n    isKey = __webpack_require__(/*! ./_isKey */ \"./node_modules/lodash/_isKey.js\"),\n    isStrictComparable = __webpack_require__(/*! ./_isStrictComparable */ \"./node_modules/lodash/_isStrictComparable.js\"),\n    matchesStrictComparable = __webpack_require__(/*! ./_matchesStrictComparable */ \"./node_modules/lodash/_matchesStrictComparable.js\"),\n    toKey = __webpack_require__(/*! ./_toKey */ \"./node_modules/lodash/_toKey.js\");\n\n/** Used to compose bitmasks for value comparisons. */\nvar COMPARE_PARTIAL_FLAG = 1,\n    COMPARE_UNORDERED_FLAG = 2;\n\n/**\n * The base implementation of `_.matchesProperty` which doesn't clone `srcValue`.\n *\n * @private\n * @param {string} path The path of the property to get.\n * @param {*} srcValue The value to match.\n * @returns {Function} Returns the new spec function.\n */\nfunction baseMatchesProperty(path, srcValue) {\n  if (isKey(path) && isStrictComparable(srcValue)) {\n    return matchesStrictComparable(toKey(path), srcValue);\n  }\n  return function(object) {\n    var objValue = get(object, path);\n    return (objValue === undefined && objValue === srcValue)\n      ? hasIn(object, path)\n      : baseIsEqual(srcValue, objValue, COMPARE_PARTIAL_FLAG | COMPARE_UNORDERED_FLAG);\n  };\n}\n\nmodule.exports = baseMatchesProperty;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_baseMatchesProperty.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_baseProperty.js":
+/*!**********************************************!*\
+  !*** ./node_modules/lodash/_baseProperty.js ***!
+  \**********************************************/
+/***/ ((module) => {
+
+eval("/**\n * The base implementation of `_.property` without support for deep paths.\n *\n * @private\n * @param {string} key The key of the property to get.\n * @returns {Function} Returns the new accessor function.\n */\nfunction baseProperty(key) {\n  return function(object) {\n    return object == null ? undefined : object[key];\n  };\n}\n\nmodule.exports = baseProperty;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_baseProperty.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_basePropertyDeep.js":
+/*!**************************************************!*\
+  !*** ./node_modules/lodash/_basePropertyDeep.js ***!
+  \**************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var baseGet = __webpack_require__(/*! ./_baseGet */ \"./node_modules/lodash/_baseGet.js\");\n\n/**\n * A specialized version of `baseProperty` which supports deep paths.\n *\n * @private\n * @param {Array|string} path The path of the property to get.\n * @returns {Function} Returns the new accessor function.\n */\nfunction basePropertyDeep(path) {\n  return function(object) {\n    return baseGet(object, path);\n  };\n}\n\nmodule.exports = basePropertyDeep;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_basePropertyDeep.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_baseTimes.js":
+/*!*******************************************!*\
+  !*** ./node_modules/lodash/_baseTimes.js ***!
+  \*******************************************/
+/***/ ((module) => {
+
+eval("/**\n * The base implementation of `_.times` without support for iteratee shorthands\n * or max array length checks.\n *\n * @private\n * @param {number} n The number of times to invoke `iteratee`.\n * @param {Function} iteratee The function invoked per iteration.\n * @returns {Array} Returns the array of results.\n */\nfunction baseTimes(n, iteratee) {\n  var index = -1,\n      result = Array(n);\n\n  while (++index < n) {\n    result[index] = iteratee(index);\n  }\n  return result;\n}\n\nmodule.exports = baseTimes;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_baseTimes.js?");
 
 /***/ }),
 
@@ -516,6 +746,26 @@ eval("/**\n * The base implementation of `_.unary` without support for storing m
 
 /***/ }),
 
+/***/ "./node_modules/lodash/_baseUniq.js":
+/*!******************************************!*\
+  !*** ./node_modules/lodash/_baseUniq.js ***!
+  \******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var SetCache = __webpack_require__(/*! ./_SetCache */ \"./node_modules/lodash/_SetCache.js\"),\n    arrayIncludes = __webpack_require__(/*! ./_arrayIncludes */ \"./node_modules/lodash/_arrayIncludes.js\"),\n    arrayIncludesWith = __webpack_require__(/*! ./_arrayIncludesWith */ \"./node_modules/lodash/_arrayIncludesWith.js\"),\n    cacheHas = __webpack_require__(/*! ./_cacheHas */ \"./node_modules/lodash/_cacheHas.js\"),\n    createSet = __webpack_require__(/*! ./_createSet */ \"./node_modules/lodash/_createSet.js\"),\n    setToArray = __webpack_require__(/*! ./_setToArray */ \"./node_modules/lodash/_setToArray.js\");\n\n/** Used as the size to enable large array optimizations. */\nvar LARGE_ARRAY_SIZE = 200;\n\n/**\n * The base implementation of `_.uniqBy` without support for iteratee shorthands.\n *\n * @private\n * @param {Array} array The array to inspect.\n * @param {Function} [iteratee] The iteratee invoked per element.\n * @param {Function} [comparator] The comparator invoked per element.\n * @returns {Array} Returns the new duplicate free array.\n */\nfunction baseUniq(array, iteratee, comparator) {\n  var index = -1,\n      includes = arrayIncludes,\n      length = array.length,\n      isCommon = true,\n      result = [],\n      seen = result;\n\n  if (comparator) {\n    isCommon = false;\n    includes = arrayIncludesWith;\n  }\n  else if (length >= LARGE_ARRAY_SIZE) {\n    var set = iteratee ? null : createSet(array);\n    if (set) {\n      return setToArray(set);\n    }\n    isCommon = false;\n    includes = cacheHas;\n    seen = new SetCache;\n  }\n  else {\n    seen = iteratee ? [] : result;\n  }\n  outer:\n  while (++index < length) {\n    var value = array[index],\n        computed = iteratee ? iteratee(value) : value;\n\n    value = (comparator || value !== 0) ? value : 0;\n    if (isCommon && computed === computed) {\n      var seenIndex = seen.length;\n      while (seenIndex--) {\n        if (seen[seenIndex] === computed) {\n          continue outer;\n        }\n      }\n      if (iteratee) {\n        seen.push(computed);\n      }\n      result.push(value);\n    }\n    else if (!includes(seen, computed, comparator)) {\n      if (seen !== result) {\n        seen.push(computed);\n      }\n      result.push(value);\n    }\n  }\n  return result;\n}\n\nmodule.exports = baseUniq;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_baseUniq.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_cacheHas.js":
+/*!******************************************!*\
+  !*** ./node_modules/lodash/_cacheHas.js ***!
+  \******************************************/
+/***/ ((module) => {
+
+eval("/**\n * Checks if a `cache` value for `key` exists.\n *\n * @private\n * @param {Object} cache The cache to query.\n * @param {string} key The key of the entry to check.\n * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.\n */\nfunction cacheHas(cache, key) {\n  return cache.has(key);\n}\n\nmodule.exports = cacheHas;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_cacheHas.js?");
+
+/***/ }),
+
 /***/ "./node_modules/lodash/_castPath.js":
 /*!******************************************!*\
   !*** ./node_modules/lodash/_castPath.js ***!
@@ -536,6 +786,46 @@ eval("var root = __webpack_require__(/*! ./_root */ \"./node_modules/lodash/_roo
 
 /***/ }),
 
+/***/ "./node_modules/lodash/_createSet.js":
+/*!*******************************************!*\
+  !*** ./node_modules/lodash/_createSet.js ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var Set = __webpack_require__(/*! ./_Set */ \"./node_modules/lodash/_Set.js\"),\n    noop = __webpack_require__(/*! ./noop */ \"./node_modules/lodash/noop.js\"),\n    setToArray = __webpack_require__(/*! ./_setToArray */ \"./node_modules/lodash/_setToArray.js\");\n\n/** Used as references for various `Number` constants. */\nvar INFINITY = 1 / 0;\n\n/**\n * Creates a set object of `values`.\n *\n * @private\n * @param {Array} values The values to add to the set.\n * @returns {Object} Returns the new set.\n */\nvar createSet = !(Set && (1 / setToArray(new Set([,-0]))[1]) == INFINITY) ? noop : function(values) {\n  return new Set(values);\n};\n\nmodule.exports = createSet;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_createSet.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_equalArrays.js":
+/*!*********************************************!*\
+  !*** ./node_modules/lodash/_equalArrays.js ***!
+  \*********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var SetCache = __webpack_require__(/*! ./_SetCache */ \"./node_modules/lodash/_SetCache.js\"),\n    arraySome = __webpack_require__(/*! ./_arraySome */ \"./node_modules/lodash/_arraySome.js\"),\n    cacheHas = __webpack_require__(/*! ./_cacheHas */ \"./node_modules/lodash/_cacheHas.js\");\n\n/** Used to compose bitmasks for value comparisons. */\nvar COMPARE_PARTIAL_FLAG = 1,\n    COMPARE_UNORDERED_FLAG = 2;\n\n/**\n * A specialized version of `baseIsEqualDeep` for arrays with support for\n * partial deep comparisons.\n *\n * @private\n * @param {Array} array The array to compare.\n * @param {Array} other The other array to compare.\n * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.\n * @param {Function} customizer The function to customize comparisons.\n * @param {Function} equalFunc The function to determine equivalents of values.\n * @param {Object} stack Tracks traversed `array` and `other` objects.\n * @returns {boolean} Returns `true` if the arrays are equivalent, else `false`.\n */\nfunction equalArrays(array, other, bitmask, customizer, equalFunc, stack) {\n  var isPartial = bitmask & COMPARE_PARTIAL_FLAG,\n      arrLength = array.length,\n      othLength = other.length;\n\n  if (arrLength != othLength && !(isPartial && othLength > arrLength)) {\n    return false;\n  }\n  // Check that cyclic values are equal.\n  var arrStacked = stack.get(array);\n  var othStacked = stack.get(other);\n  if (arrStacked && othStacked) {\n    return arrStacked == other && othStacked == array;\n  }\n  var index = -1,\n      result = true,\n      seen = (bitmask & COMPARE_UNORDERED_FLAG) ? new SetCache : undefined;\n\n  stack.set(array, other);\n  stack.set(other, array);\n\n  // Ignore non-index properties.\n  while (++index < arrLength) {\n    var arrValue = array[index],\n        othValue = other[index];\n\n    if (customizer) {\n      var compared = isPartial\n        ? customizer(othValue, arrValue, index, other, array, stack)\n        : customizer(arrValue, othValue, index, array, other, stack);\n    }\n    if (compared !== undefined) {\n      if (compared) {\n        continue;\n      }\n      result = false;\n      break;\n    }\n    // Recursively compare arrays (susceptible to call stack limits).\n    if (seen) {\n      if (!arraySome(other, function(othValue, othIndex) {\n            if (!cacheHas(seen, othIndex) &&\n                (arrValue === othValue || equalFunc(arrValue, othValue, bitmask, customizer, stack))) {\n              return seen.push(othIndex);\n            }\n          })) {\n        result = false;\n        break;\n      }\n    } else if (!(\n          arrValue === othValue ||\n            equalFunc(arrValue, othValue, bitmask, customizer, stack)\n        )) {\n      result = false;\n      break;\n    }\n  }\n  stack['delete'](array);\n  stack['delete'](other);\n  return result;\n}\n\nmodule.exports = equalArrays;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_equalArrays.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_equalByTag.js":
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_equalByTag.js ***!
+  \********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var Symbol = __webpack_require__(/*! ./_Symbol */ \"./node_modules/lodash/_Symbol.js\"),\n    Uint8Array = __webpack_require__(/*! ./_Uint8Array */ \"./node_modules/lodash/_Uint8Array.js\"),\n    eq = __webpack_require__(/*! ./eq */ \"./node_modules/lodash/eq.js\"),\n    equalArrays = __webpack_require__(/*! ./_equalArrays */ \"./node_modules/lodash/_equalArrays.js\"),\n    mapToArray = __webpack_require__(/*! ./_mapToArray */ \"./node_modules/lodash/_mapToArray.js\"),\n    setToArray = __webpack_require__(/*! ./_setToArray */ \"./node_modules/lodash/_setToArray.js\");\n\n/** Used to compose bitmasks for value comparisons. */\nvar COMPARE_PARTIAL_FLAG = 1,\n    COMPARE_UNORDERED_FLAG = 2;\n\n/** `Object#toString` result references. */\nvar boolTag = '[object Boolean]',\n    dateTag = '[object Date]',\n    errorTag = '[object Error]',\n    mapTag = '[object Map]',\n    numberTag = '[object Number]',\n    regexpTag = '[object RegExp]',\n    setTag = '[object Set]',\n    stringTag = '[object String]',\n    symbolTag = '[object Symbol]';\n\nvar arrayBufferTag = '[object ArrayBuffer]',\n    dataViewTag = '[object DataView]';\n\n/** Used to convert symbols to primitives and strings. */\nvar symbolProto = Symbol ? Symbol.prototype : undefined,\n    symbolValueOf = symbolProto ? symbolProto.valueOf : undefined;\n\n/**\n * A specialized version of `baseIsEqualDeep` for comparing objects of\n * the same `toStringTag`.\n *\n * **Note:** This function only supports comparing values with tags of\n * `Boolean`, `Date`, `Error`, `Number`, `RegExp`, or `String`.\n *\n * @private\n * @param {Object} object The object to compare.\n * @param {Object} other The other object to compare.\n * @param {string} tag The `toStringTag` of the objects to compare.\n * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.\n * @param {Function} customizer The function to customize comparisons.\n * @param {Function} equalFunc The function to determine equivalents of values.\n * @param {Object} stack Tracks traversed `object` and `other` objects.\n * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.\n */\nfunction equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {\n  switch (tag) {\n    case dataViewTag:\n      if ((object.byteLength != other.byteLength) ||\n          (object.byteOffset != other.byteOffset)) {\n        return false;\n      }\n      object = object.buffer;\n      other = other.buffer;\n\n    case arrayBufferTag:\n      if ((object.byteLength != other.byteLength) ||\n          !equalFunc(new Uint8Array(object), new Uint8Array(other))) {\n        return false;\n      }\n      return true;\n\n    case boolTag:\n    case dateTag:\n    case numberTag:\n      // Coerce booleans to `1` or `0` and dates to milliseconds.\n      // Invalid dates are coerced to `NaN`.\n      return eq(+object, +other);\n\n    case errorTag:\n      return object.name == other.name && object.message == other.message;\n\n    case regexpTag:\n    case stringTag:\n      // Coerce regexes to strings and treat strings, primitives and objects,\n      // as equal. See http://www.ecma-international.org/ecma-262/7.0/#sec-regexp.prototype.tostring\n      // for more details.\n      return object == (other + '');\n\n    case mapTag:\n      var convert = mapToArray;\n\n    case setTag:\n      var isPartial = bitmask & COMPARE_PARTIAL_FLAG;\n      convert || (convert = setToArray);\n\n      if (object.size != other.size && !isPartial) {\n        return false;\n      }\n      // Assume cyclic values are equal.\n      var stacked = stack.get(object);\n      if (stacked) {\n        return stacked == other;\n      }\n      bitmask |= COMPARE_UNORDERED_FLAG;\n\n      // Recursively compare objects (susceptible to call stack limits).\n      stack.set(object, other);\n      var result = equalArrays(convert(object), convert(other), bitmask, customizer, equalFunc, stack);\n      stack['delete'](object);\n      return result;\n\n    case symbolTag:\n      if (symbolValueOf) {\n        return symbolValueOf.call(object) == symbolValueOf.call(other);\n      }\n  }\n  return false;\n}\n\nmodule.exports = equalByTag;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_equalByTag.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_equalObjects.js":
+/*!**********************************************!*\
+  !*** ./node_modules/lodash/_equalObjects.js ***!
+  \**********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var getAllKeys = __webpack_require__(/*! ./_getAllKeys */ \"./node_modules/lodash/_getAllKeys.js\");\n\n/** Used to compose bitmasks for value comparisons. */\nvar COMPARE_PARTIAL_FLAG = 1;\n\n/** Used for built-in method references. */\nvar objectProto = Object.prototype;\n\n/** Used to check objects for own properties. */\nvar hasOwnProperty = objectProto.hasOwnProperty;\n\n/**\n * A specialized version of `baseIsEqualDeep` for objects with support for\n * partial deep comparisons.\n *\n * @private\n * @param {Object} object The object to compare.\n * @param {Object} other The other object to compare.\n * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.\n * @param {Function} customizer The function to customize comparisons.\n * @param {Function} equalFunc The function to determine equivalents of values.\n * @param {Object} stack Tracks traversed `object` and `other` objects.\n * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.\n */\nfunction equalObjects(object, other, bitmask, customizer, equalFunc, stack) {\n  var isPartial = bitmask & COMPARE_PARTIAL_FLAG,\n      objProps = getAllKeys(object),\n      objLength = objProps.length,\n      othProps = getAllKeys(other),\n      othLength = othProps.length;\n\n  if (objLength != othLength && !isPartial) {\n    return false;\n  }\n  var index = objLength;\n  while (index--) {\n    var key = objProps[index];\n    if (!(isPartial ? key in other : hasOwnProperty.call(other, key))) {\n      return false;\n    }\n  }\n  // Check that cyclic values are equal.\n  var objStacked = stack.get(object);\n  var othStacked = stack.get(other);\n  if (objStacked && othStacked) {\n    return objStacked == other && othStacked == object;\n  }\n  var result = true;\n  stack.set(object, other);\n  stack.set(other, object);\n\n  var skipCtor = isPartial;\n  while (++index < objLength) {\n    key = objProps[index];\n    var objValue = object[key],\n        othValue = other[key];\n\n    if (customizer) {\n      var compared = isPartial\n        ? customizer(othValue, objValue, key, other, object, stack)\n        : customizer(objValue, othValue, key, object, other, stack);\n    }\n    // Recursively compare objects (susceptible to call stack limits).\n    if (!(compared === undefined\n          ? (objValue === othValue || equalFunc(objValue, othValue, bitmask, customizer, stack))\n          : compared\n        )) {\n      result = false;\n      break;\n    }\n    skipCtor || (skipCtor = key == 'constructor');\n  }\n  if (result && !skipCtor) {\n    var objCtor = object.constructor,\n        othCtor = other.constructor;\n\n    // Non `Object` object instances with different constructors are not equal.\n    if (objCtor != othCtor &&\n        ('constructor' in object && 'constructor' in other) &&\n        !(typeof objCtor == 'function' && objCtor instanceof objCtor &&\n          typeof othCtor == 'function' && othCtor instanceof othCtor)) {\n      result = false;\n    }\n  }\n  stack['delete'](object);\n  stack['delete'](other);\n  return result;\n}\n\nmodule.exports = equalObjects;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_equalObjects.js?");
+
+/***/ }),
+
 /***/ "./node_modules/lodash/_freeGlobal.js":
 /*!********************************************!*\
   !*** ./node_modules/lodash/_freeGlobal.js ***!
@@ -546,6 +836,16 @@ eval("/** Detect free variable `global` from Node.js. */\nvar freeGlobal = typeo
 
 /***/ }),
 
+/***/ "./node_modules/lodash/_getAllKeys.js":
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_getAllKeys.js ***!
+  \********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var baseGetAllKeys = __webpack_require__(/*! ./_baseGetAllKeys */ \"./node_modules/lodash/_baseGetAllKeys.js\"),\n    getSymbols = __webpack_require__(/*! ./_getSymbols */ \"./node_modules/lodash/_getSymbols.js\"),\n    keys = __webpack_require__(/*! ./keys */ \"./node_modules/lodash/keys.js\");\n\n/**\n * Creates an array of own enumerable property names and symbols of `object`.\n *\n * @private\n * @param {Object} object The object to query.\n * @returns {Array} Returns the array of property names and symbols.\n */\nfunction getAllKeys(object) {\n  return baseGetAllKeys(object, keys, getSymbols);\n}\n\nmodule.exports = getAllKeys;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_getAllKeys.js?");
+
+/***/ }),
+
 /***/ "./node_modules/lodash/_getMapData.js":
 /*!********************************************!*\
   !*** ./node_modules/lodash/_getMapData.js ***!
@@ -553,6 +853,16 @@ eval("/** Detect free variable `global` from Node.js. */\nvar freeGlobal = typeo
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 eval("var isKeyable = __webpack_require__(/*! ./_isKeyable */ \"./node_modules/lodash/_isKeyable.js\");\n\n/**\n * Gets the data for `map`.\n *\n * @private\n * @param {Object} map The map to query.\n * @param {string} key The reference key.\n * @returns {*} Returns the map data.\n */\nfunction getMapData(map, key) {\n  var data = map.__data__;\n  return isKeyable(key)\n    ? data[typeof key == 'string' ? 'string' : 'hash']\n    : data.map;\n}\n\nmodule.exports = getMapData;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_getMapData.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_getMatchData.js":
+/*!**********************************************!*\
+  !*** ./node_modules/lodash/_getMatchData.js ***!
+  \**********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var isStrictComparable = __webpack_require__(/*! ./_isStrictComparable */ \"./node_modules/lodash/_isStrictComparable.js\"),\n    keys = __webpack_require__(/*! ./keys */ \"./node_modules/lodash/keys.js\");\n\n/**\n * Gets the property names, values, and compare flags of `object`.\n *\n * @private\n * @param {Object} object The object to query.\n * @returns {Array} Returns the match data of `object`.\n */\nfunction getMatchData(object) {\n  var result = keys(object),\n      length = result.length;\n\n  while (length--) {\n    var key = result[length],\n        value = object[key];\n\n    result[length] = [key, value, isStrictComparable(value)];\n  }\n  return result;\n}\n\nmodule.exports = getMatchData;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_getMatchData.js?");
 
 /***/ }),
 
@@ -576,6 +886,16 @@ eval("var Symbol = __webpack_require__(/*! ./_Symbol */ \"./node_modules/lodash/
 
 /***/ }),
 
+/***/ "./node_modules/lodash/_getSymbols.js":
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_getSymbols.js ***!
+  \********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var arrayFilter = __webpack_require__(/*! ./_arrayFilter */ \"./node_modules/lodash/_arrayFilter.js\"),\n    stubArray = __webpack_require__(/*! ./stubArray */ \"./node_modules/lodash/stubArray.js\");\n\n/** Used for built-in method references. */\nvar objectProto = Object.prototype;\n\n/** Built-in value references. */\nvar propertyIsEnumerable = objectProto.propertyIsEnumerable;\n\n/* Built-in method references for those with the same name as other `lodash` methods. */\nvar nativeGetSymbols = Object.getOwnPropertySymbols;\n\n/**\n * Creates an array of the own enumerable symbols of `object`.\n *\n * @private\n * @param {Object} object The object to query.\n * @returns {Array} Returns the array of symbols.\n */\nvar getSymbols = !nativeGetSymbols ? stubArray : function(object) {\n  if (object == null) {\n    return [];\n  }\n  object = Object(object);\n  return arrayFilter(nativeGetSymbols(object), function(symbol) {\n    return propertyIsEnumerable.call(object, symbol);\n  });\n};\n\nmodule.exports = getSymbols;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_getSymbols.js?");
+
+/***/ }),
+
 /***/ "./node_modules/lodash/_getTag.js":
 /*!****************************************!*\
   !*** ./node_modules/lodash/_getTag.js ***!
@@ -593,6 +913,16 @@ eval("var DataView = __webpack_require__(/*! ./_DataView */ \"./node_modules/lod
 /***/ ((module) => {
 
 eval("/**\n * Gets the value at `key` of `object`.\n *\n * @private\n * @param {Object} [object] The object to query.\n * @param {string} key The key of the property to get.\n * @returns {*} Returns the property value.\n */\nfunction getValue(object, key) {\n  return object == null ? undefined : object[key];\n}\n\nmodule.exports = getValue;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_getValue.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_hasPath.js":
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/_hasPath.js ***!
+  \*****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var castPath = __webpack_require__(/*! ./_castPath */ \"./node_modules/lodash/_castPath.js\"),\n    isArguments = __webpack_require__(/*! ./isArguments */ \"./node_modules/lodash/isArguments.js\"),\n    isArray = __webpack_require__(/*! ./isArray */ \"./node_modules/lodash/isArray.js\"),\n    isIndex = __webpack_require__(/*! ./_isIndex */ \"./node_modules/lodash/_isIndex.js\"),\n    isLength = __webpack_require__(/*! ./isLength */ \"./node_modules/lodash/isLength.js\"),\n    toKey = __webpack_require__(/*! ./_toKey */ \"./node_modules/lodash/_toKey.js\");\n\n/**\n * Checks if `path` exists on `object`.\n *\n * @private\n * @param {Object} object The object to query.\n * @param {Array|string} path The path to check.\n * @param {Function} hasFunc The function to check properties.\n * @returns {boolean} Returns `true` if `path` exists, else `false`.\n */\nfunction hasPath(object, path, hasFunc) {\n  path = castPath(path, object);\n\n  var index = -1,\n      length = path.length,\n      result = false;\n\n  while (++index < length) {\n    var key = toKey(path[index]);\n    if (!(result = object != null && hasFunc(object, key))) {\n      break;\n    }\n    object = object[key];\n  }\n  if (result || ++index != length) {\n    return result;\n  }\n  length = object == null ? 0 : object.length;\n  return !!length && isLength(length) && isIndex(key, length) &&\n    (isArray(object) || isArguments(object));\n}\n\nmodule.exports = hasPath;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_hasPath.js?");
 
 /***/ }),
 
@@ -646,6 +976,16 @@ eval("var nativeCreate = __webpack_require__(/*! ./_nativeCreate */ \"./node_mod
 
 /***/ }),
 
+/***/ "./node_modules/lodash/_isIndex.js":
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/_isIndex.js ***!
+  \*****************************************/
+/***/ ((module) => {
+
+eval("/** Used as references for various `Number` constants. */\nvar MAX_SAFE_INTEGER = 9007199254740991;\n\n/** Used to detect unsigned integer values. */\nvar reIsUint = /^(?:0|[1-9]\\d*)$/;\n\n/**\n * Checks if `value` is a valid array-like index.\n *\n * @private\n * @param {*} value The value to check.\n * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.\n * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.\n */\nfunction isIndex(value, length) {\n  var type = typeof value;\n  length = length == null ? MAX_SAFE_INTEGER : length;\n\n  return !!length &&\n    (type == 'number' ||\n      (type != 'symbol' && reIsUint.test(value))) &&\n        (value > -1 && value % 1 == 0 && value < length);\n}\n\nmodule.exports = isIndex;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_isIndex.js?");
+
+/***/ }),
+
 /***/ "./node_modules/lodash/_isKey.js":
 /*!***************************************!*\
   !*** ./node_modules/lodash/_isKey.js ***!
@@ -683,6 +1023,16 @@ eval("var coreJsData = __webpack_require__(/*! ./_coreJsData */ \"./node_modules
 /***/ ((module) => {
 
 eval("/** Used for built-in method references. */\nvar objectProto = Object.prototype;\n\n/**\n * Checks if `value` is likely a prototype object.\n *\n * @private\n * @param {*} value The value to check.\n * @returns {boolean} Returns `true` if `value` is a prototype, else `false`.\n */\nfunction isPrototype(value) {\n  var Ctor = value && value.constructor,\n      proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto;\n\n  return value === proto;\n}\n\nmodule.exports = isPrototype;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_isPrototype.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_isStrictComparable.js":
+/*!****************************************************!*\
+  !*** ./node_modules/lodash/_isStrictComparable.js ***!
+  \****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var isObject = __webpack_require__(/*! ./isObject */ \"./node_modules/lodash/isObject.js\");\n\n/**\n * Checks if `value` is suitable for strict equality comparisons, i.e. `===`.\n *\n * @private\n * @param {*} value The value to check.\n * @returns {boolean} Returns `true` if `value` if suitable for strict\n *  equality comparisons, else `false`.\n */\nfunction isStrictComparable(value) {\n  return value === value && !isObject(value);\n}\n\nmodule.exports = isStrictComparable;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_isStrictComparable.js?");
 
 /***/ }),
 
@@ -786,6 +1136,26 @@ eval("var getMapData = __webpack_require__(/*! ./_getMapData */ \"./node_modules
 
 /***/ }),
 
+/***/ "./node_modules/lodash/_mapToArray.js":
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_mapToArray.js ***!
+  \********************************************/
+/***/ ((module) => {
+
+eval("/**\n * Converts `map` to its key-value pairs.\n *\n * @private\n * @param {Object} map The map to convert.\n * @returns {Array} Returns the key-value pairs.\n */\nfunction mapToArray(map) {\n  var index = -1,\n      result = Array(map.size);\n\n  map.forEach(function(value, key) {\n    result[++index] = [key, value];\n  });\n  return result;\n}\n\nmodule.exports = mapToArray;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_mapToArray.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_matchesStrictComparable.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/lodash/_matchesStrictComparable.js ***!
+  \*********************************************************/
+/***/ ((module) => {
+
+eval("/**\n * A specialized version of `matchesProperty` for source values suitable\n * for strict equality comparisons, i.e. `===`.\n *\n * @private\n * @param {string} key The key of the property to get.\n * @param {*} srcValue The value to match.\n * @returns {Function} Returns the new spec function.\n */\nfunction matchesStrictComparable(key, srcValue) {\n  return function(object) {\n    if (object == null) {\n      return false;\n    }\n    return object[key] === srcValue &&\n      (srcValue !== undefined || (key in Object(object)));\n  };\n}\n\nmodule.exports = matchesStrictComparable;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_matchesStrictComparable.js?");
+
+/***/ }),
+
 /***/ "./node_modules/lodash/_memoizeCapped.js":
 /*!***********************************************!*\
   !*** ./node_modules/lodash/_memoizeCapped.js ***!
@@ -856,6 +1226,96 @@ eval("var freeGlobal = __webpack_require__(/*! ./_freeGlobal */ \"./node_modules
 
 /***/ }),
 
+/***/ "./node_modules/lodash/_setCacheAdd.js":
+/*!*********************************************!*\
+  !*** ./node_modules/lodash/_setCacheAdd.js ***!
+  \*********************************************/
+/***/ ((module) => {
+
+eval("/** Used to stand-in for `undefined` hash values. */\nvar HASH_UNDEFINED = '__lodash_hash_undefined__';\n\n/**\n * Adds `value` to the array cache.\n *\n * @private\n * @name add\n * @memberOf SetCache\n * @alias push\n * @param {*} value The value to cache.\n * @returns {Object} Returns the cache instance.\n */\nfunction setCacheAdd(value) {\n  this.__data__.set(value, HASH_UNDEFINED);\n  return this;\n}\n\nmodule.exports = setCacheAdd;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_setCacheAdd.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_setCacheHas.js":
+/*!*********************************************!*\
+  !*** ./node_modules/lodash/_setCacheHas.js ***!
+  \*********************************************/
+/***/ ((module) => {
+
+eval("/**\n * Checks if `value` is in the array cache.\n *\n * @private\n * @name has\n * @memberOf SetCache\n * @param {*} value The value to search for.\n * @returns {number} Returns `true` if `value` is found, else `false`.\n */\nfunction setCacheHas(value) {\n  return this.__data__.has(value);\n}\n\nmodule.exports = setCacheHas;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_setCacheHas.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_setToArray.js":
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_setToArray.js ***!
+  \********************************************/
+/***/ ((module) => {
+
+eval("/**\n * Converts `set` to an array of its values.\n *\n * @private\n * @param {Object} set The set to convert.\n * @returns {Array} Returns the values.\n */\nfunction setToArray(set) {\n  var index = -1,\n      result = Array(set.size);\n\n  set.forEach(function(value) {\n    result[++index] = value;\n  });\n  return result;\n}\n\nmodule.exports = setToArray;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_setToArray.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_stackClear.js":
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_stackClear.js ***!
+  \********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var ListCache = __webpack_require__(/*! ./_ListCache */ \"./node_modules/lodash/_ListCache.js\");\n\n/**\n * Removes all key-value entries from the stack.\n *\n * @private\n * @name clear\n * @memberOf Stack\n */\nfunction stackClear() {\n  this.__data__ = new ListCache;\n  this.size = 0;\n}\n\nmodule.exports = stackClear;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_stackClear.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_stackDelete.js":
+/*!*********************************************!*\
+  !*** ./node_modules/lodash/_stackDelete.js ***!
+  \*********************************************/
+/***/ ((module) => {
+
+eval("/**\n * Removes `key` and its value from the stack.\n *\n * @private\n * @name delete\n * @memberOf Stack\n * @param {string} key The key of the value to remove.\n * @returns {boolean} Returns `true` if the entry was removed, else `false`.\n */\nfunction stackDelete(key) {\n  var data = this.__data__,\n      result = data['delete'](key);\n\n  this.size = data.size;\n  return result;\n}\n\nmodule.exports = stackDelete;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_stackDelete.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_stackGet.js":
+/*!******************************************!*\
+  !*** ./node_modules/lodash/_stackGet.js ***!
+  \******************************************/
+/***/ ((module) => {
+
+eval("/**\n * Gets the stack value for `key`.\n *\n * @private\n * @name get\n * @memberOf Stack\n * @param {string} key The key of the value to get.\n * @returns {*} Returns the entry value.\n */\nfunction stackGet(key) {\n  return this.__data__.get(key);\n}\n\nmodule.exports = stackGet;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_stackGet.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_stackHas.js":
+/*!******************************************!*\
+  !*** ./node_modules/lodash/_stackHas.js ***!
+  \******************************************/
+/***/ ((module) => {
+
+eval("/**\n * Checks if a stack value for `key` exists.\n *\n * @private\n * @name has\n * @memberOf Stack\n * @param {string} key The key of the entry to check.\n * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.\n */\nfunction stackHas(key) {\n  return this.__data__.has(key);\n}\n\nmodule.exports = stackHas;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_stackHas.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_stackSet.js":
+/*!******************************************!*\
+  !*** ./node_modules/lodash/_stackSet.js ***!
+  \******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var ListCache = __webpack_require__(/*! ./_ListCache */ \"./node_modules/lodash/_ListCache.js\"),\n    Map = __webpack_require__(/*! ./_Map */ \"./node_modules/lodash/_Map.js\"),\n    MapCache = __webpack_require__(/*! ./_MapCache */ \"./node_modules/lodash/_MapCache.js\");\n\n/** Used as the size to enable large array optimizations. */\nvar LARGE_ARRAY_SIZE = 200;\n\n/**\n * Sets the stack `key` to `value`.\n *\n * @private\n * @name set\n * @memberOf Stack\n * @param {string} key The key of the value to set.\n * @param {*} value The value to set.\n * @returns {Object} Returns the stack cache instance.\n */\nfunction stackSet(key, value) {\n  var data = this.__data__;\n  if (data instanceof ListCache) {\n    var pairs = data.__data__;\n    if (!Map || (pairs.length < LARGE_ARRAY_SIZE - 1)) {\n      pairs.push([key, value]);\n      this.size = ++data.size;\n      return this;\n    }\n    data = this.__data__ = new MapCache(pairs);\n  }\n  data.set(key, value);\n  this.size = data.size;\n  return this;\n}\n\nmodule.exports = stackSet;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_stackSet.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_strictIndexOf.js":
+/*!***********************************************!*\
+  !*** ./node_modules/lodash/_strictIndexOf.js ***!
+  \***********************************************/
+/***/ ((module) => {
+
+eval("/**\n * A specialized version of `_.indexOf` which performs strict equality\n * comparisons of values, i.e. `===`.\n *\n * @private\n * @param {Array} array The array to inspect.\n * @param {*} value The value to search for.\n * @param {number} fromIndex The index to search from.\n * @returns {number} Returns the index of the matched value, else `-1`.\n */\nfunction strictIndexOf(array, value, fromIndex) {\n  var index = fromIndex - 1,\n      length = array.length;\n\n  while (++index < length) {\n    if (array[index] === value) {\n      return index;\n    }\n  }\n  return -1;\n}\n\nmodule.exports = strictIndexOf;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/_strictIndexOf.js?");
+
+/***/ }),
+
 /***/ "./node_modules/lodash/_stringToPath.js":
 /*!**********************************************!*\
   !*** ./node_modules/lodash/_stringToPath.js ***!
@@ -903,6 +1363,26 @@ eval("/**\n * Performs a\n * [`SameValueZero`](http://ecma-international.org/ecm
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 eval("var baseGet = __webpack_require__(/*! ./_baseGet */ \"./node_modules/lodash/_baseGet.js\");\n\n/**\n * Gets the value at `path` of `object`. If the resolved value is\n * `undefined`, the `defaultValue` is returned in its place.\n *\n * @static\n * @memberOf _\n * @since 3.7.0\n * @category Object\n * @param {Object} object The object to query.\n * @param {Array|string} path The path of the property to get.\n * @param {*} [defaultValue] The value returned for `undefined` resolved values.\n * @returns {*} Returns the resolved value.\n * @example\n *\n * var object = { 'a': [{ 'b': { 'c': 3 } }] };\n *\n * _.get(object, 'a[0].b.c');\n * // => 3\n *\n * _.get(object, ['a', '0', 'b', 'c']);\n * // => 3\n *\n * _.get(object, 'a.b.c', 'default');\n * // => 'default'\n */\nfunction get(object, path, defaultValue) {\n  var result = object == null ? undefined : baseGet(object, path);\n  return result === undefined ? defaultValue : result;\n}\n\nmodule.exports = get;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/get.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/hasIn.js":
+/*!**************************************!*\
+  !*** ./node_modules/lodash/hasIn.js ***!
+  \**************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var baseHasIn = __webpack_require__(/*! ./_baseHasIn */ \"./node_modules/lodash/_baseHasIn.js\"),\n    hasPath = __webpack_require__(/*! ./_hasPath */ \"./node_modules/lodash/_hasPath.js\");\n\n/**\n * Checks if `path` is a direct or inherited property of `object`.\n *\n * @static\n * @memberOf _\n * @since 4.0.0\n * @category Object\n * @param {Object} object The object to query.\n * @param {Array|string} path The path to check.\n * @returns {boolean} Returns `true` if `path` exists, else `false`.\n * @example\n *\n * var object = _.create({ 'a': _.create({ 'b': 2 }) });\n *\n * _.hasIn(object, 'a');\n * // => true\n *\n * _.hasIn(object, 'a.b');\n * // => true\n *\n * _.hasIn(object, ['a', 'b']);\n * // => true\n *\n * _.hasIn(object, 'b');\n * // => false\n */\nfunction hasIn(object, path) {\n  return object != null && hasPath(object, path, baseHasIn);\n}\n\nmodule.exports = hasIn;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/hasIn.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/identity.js":
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/identity.js ***!
+  \*****************************************/
+/***/ ((module) => {
+
+eval("/**\n * This method returns the first argument it receives.\n *\n * @static\n * @since 0.1.0\n * @memberOf _\n * @category Util\n * @param {*} value Any value.\n * @returns {*} Returns `value`.\n * @example\n *\n * var object = { 'a': 1 };\n *\n * console.log(_.identity(object) === object);\n * // => true\n */\nfunction identity(value) {\n  return value;\n}\n\nmodule.exports = identity;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/identity.js?");
 
 /***/ }),
 
@@ -1026,6 +1506,16 @@ eval("var baseIsTypedArray = __webpack_require__(/*! ./_baseIsTypedArray */ \"./
 
 /***/ }),
 
+/***/ "./node_modules/lodash/keys.js":
+/*!*************************************!*\
+  !*** ./node_modules/lodash/keys.js ***!
+  \*************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var arrayLikeKeys = __webpack_require__(/*! ./_arrayLikeKeys */ \"./node_modules/lodash/_arrayLikeKeys.js\"),\n    baseKeys = __webpack_require__(/*! ./_baseKeys */ \"./node_modules/lodash/_baseKeys.js\"),\n    isArrayLike = __webpack_require__(/*! ./isArrayLike */ \"./node_modules/lodash/isArrayLike.js\");\n\n/**\n * Creates an array of the own enumerable property names of `object`.\n *\n * **Note:** Non-object values are coerced to objects. See the\n * [ES spec](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)\n * for more details.\n *\n * @static\n * @since 0.1.0\n * @memberOf _\n * @category Object\n * @param {Object} object The object to query.\n * @returns {Array} Returns the array of property names.\n * @example\n *\n * function Foo() {\n *   this.a = 1;\n *   this.b = 2;\n * }\n *\n * Foo.prototype.c = 3;\n *\n * _.keys(new Foo);\n * // => ['a', 'b'] (iteration order is not guaranteed)\n *\n * _.keys('hi');\n * // => ['0', '1']\n */\nfunction keys(object) {\n  return isArrayLike(object) ? arrayLikeKeys(object) : baseKeys(object);\n}\n\nmodule.exports = keys;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/keys.js?");
+
+/***/ }),
+
 /***/ "./node_modules/lodash/memoize.js":
 /*!****************************************!*\
   !*** ./node_modules/lodash/memoize.js ***!
@@ -1033,6 +1523,36 @@ eval("var baseIsTypedArray = __webpack_require__(/*! ./_baseIsTypedArray */ \"./
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 eval("var MapCache = __webpack_require__(/*! ./_MapCache */ \"./node_modules/lodash/_MapCache.js\");\n\n/** Error message constants. */\nvar FUNC_ERROR_TEXT = 'Expected a function';\n\n/**\n * Creates a function that memoizes the result of `func`. If `resolver` is\n * provided, it determines the cache key for storing the result based on the\n * arguments provided to the memoized function. By default, the first argument\n * provided to the memoized function is used as the map cache key. The `func`\n * is invoked with the `this` binding of the memoized function.\n *\n * **Note:** The cache is exposed as the `cache` property on the memoized\n * function. Its creation may be customized by replacing the `_.memoize.Cache`\n * constructor with one whose instances implement the\n * [`Map`](http://ecma-international.org/ecma-262/7.0/#sec-properties-of-the-map-prototype-object)\n * method interface of `clear`, `delete`, `get`, `has`, and `set`.\n *\n * @static\n * @memberOf _\n * @since 0.1.0\n * @category Function\n * @param {Function} func The function to have its output memoized.\n * @param {Function} [resolver] The function to resolve the cache key.\n * @returns {Function} Returns the new memoized function.\n * @example\n *\n * var object = { 'a': 1, 'b': 2 };\n * var other = { 'c': 3, 'd': 4 };\n *\n * var values = _.memoize(_.values);\n * values(object);\n * // => [1, 2]\n *\n * values(other);\n * // => [3, 4]\n *\n * object.a = 2;\n * values(object);\n * // => [1, 2]\n *\n * // Modify the result cache.\n * values.cache.set(object, ['a', 'b']);\n * values(object);\n * // => ['a', 'b']\n *\n * // Replace `_.memoize.Cache`.\n * _.memoize.Cache = WeakMap;\n */\nfunction memoize(func, resolver) {\n  if (typeof func != 'function' || (resolver != null && typeof resolver != 'function')) {\n    throw new TypeError(FUNC_ERROR_TEXT);\n  }\n  var memoized = function() {\n    var args = arguments,\n        key = resolver ? resolver.apply(this, args) : args[0],\n        cache = memoized.cache;\n\n    if (cache.has(key)) {\n      return cache.get(key);\n    }\n    var result = func.apply(this, args);\n    memoized.cache = cache.set(key, result) || cache;\n    return result;\n  };\n  memoized.cache = new (memoize.Cache || MapCache);\n  return memoized;\n}\n\n// Expose `MapCache`.\nmemoize.Cache = MapCache;\n\nmodule.exports = memoize;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/memoize.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/noop.js":
+/*!*************************************!*\
+  !*** ./node_modules/lodash/noop.js ***!
+  \*************************************/
+/***/ ((module) => {
+
+eval("/**\n * This method returns `undefined`.\n *\n * @static\n * @memberOf _\n * @since 2.3.0\n * @category Util\n * @example\n *\n * _.times(2, _.noop);\n * // => [undefined, undefined]\n */\nfunction noop() {\n  // No operation performed.\n}\n\nmodule.exports = noop;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/noop.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/property.js":
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/property.js ***!
+  \*****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var baseProperty = __webpack_require__(/*! ./_baseProperty */ \"./node_modules/lodash/_baseProperty.js\"),\n    basePropertyDeep = __webpack_require__(/*! ./_basePropertyDeep */ \"./node_modules/lodash/_basePropertyDeep.js\"),\n    isKey = __webpack_require__(/*! ./_isKey */ \"./node_modules/lodash/_isKey.js\"),\n    toKey = __webpack_require__(/*! ./_toKey */ \"./node_modules/lodash/_toKey.js\");\n\n/**\n * Creates a function that returns the value at `path` of a given object.\n *\n * @static\n * @memberOf _\n * @since 2.4.0\n * @category Util\n * @param {Array|string} path The path of the property to get.\n * @returns {Function} Returns the new accessor function.\n * @example\n *\n * var objects = [\n *   { 'a': { 'b': 2 } },\n *   { 'a': { 'b': 1 } }\n * ];\n *\n * _.map(objects, _.property('a.b'));\n * // => [2, 1]\n *\n * _.map(_.sortBy(objects, _.property(['a', 'b'])), 'a.b');\n * // => [1, 2]\n */\nfunction property(path) {\n  return isKey(path) ? baseProperty(toKey(path)) : basePropertyDeep(path);\n}\n\nmodule.exports = property;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/property.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/stubArray.js":
+/*!******************************************!*\
+  !*** ./node_modules/lodash/stubArray.js ***!
+  \******************************************/
+/***/ ((module) => {
+
+eval("/**\n * This method returns a new empty array.\n *\n * @static\n * @memberOf _\n * @since 4.13.0\n * @category Util\n * @returns {Array} Returns the new empty array.\n * @example\n *\n * var arrays = _.times(2, _.stubArray);\n *\n * console.log(arrays);\n * // => [[], []]\n *\n * console.log(arrays[0] === arrays[1]);\n * // => false\n */\nfunction stubArray() {\n  return [];\n}\n\nmodule.exports = stubArray;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/stubArray.js?");
 
 /***/ }),
 
@@ -1053,6 +1573,16 @@ eval("/**\n * This method returns `false`.\n *\n * @static\n * @memberOf _\n * @
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 eval("var baseToString = __webpack_require__(/*! ./_baseToString */ \"./node_modules/lodash/_baseToString.js\");\n\n/**\n * Converts `value` to a string. An empty string is returned for `null`\n * and `undefined` values. The sign of `-0` is preserved.\n *\n * @static\n * @memberOf _\n * @since 4.0.0\n * @category Lang\n * @param {*} value The value to convert.\n * @returns {string} Returns the converted string.\n * @example\n *\n * _.toString(null);\n * // => ''\n *\n * _.toString(-0);\n * // => '-0'\n *\n * _.toString([1, 2, 3]);\n * // => '1,2,3'\n */\nfunction toString(value) {\n  return value == null ? '' : baseToString(value);\n}\n\nmodule.exports = toString;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/toString.js?");
+
+/***/ }),
+
+/***/ "./node_modules/lodash/uniqBy.js":
+/*!***************************************!*\
+  !*** ./node_modules/lodash/uniqBy.js ***!
+  \***************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var baseIteratee = __webpack_require__(/*! ./_baseIteratee */ \"./node_modules/lodash/_baseIteratee.js\"),\n    baseUniq = __webpack_require__(/*! ./_baseUniq */ \"./node_modules/lodash/_baseUniq.js\");\n\n/**\n * This method is like `_.uniq` except that it accepts `iteratee` which is\n * invoked for each element in `array` to generate the criterion by which\n * uniqueness is computed. The order of result values is determined by the\n * order they occur in the array. The iteratee is invoked with one argument:\n * (value).\n *\n * @static\n * @memberOf _\n * @since 4.0.0\n * @category Array\n * @param {Array} array The array to inspect.\n * @param {Function} [iteratee=_.identity] The iteratee invoked per element.\n * @returns {Array} Returns the new duplicate free array.\n * @example\n *\n * _.uniqBy([2.1, 1.2, 2.3], Math.floor);\n * // => [2.1, 1.2]\n *\n * // The `_.property` iteratee shorthand.\n * _.uniqBy([{ 'x': 1 }, { 'x': 2 }, { 'x': 1 }], 'x');\n * // => [{ 'x': 1 }, { 'x': 2 }]\n */\nfunction uniqBy(array, iteratee) {\n  return (array && array.length) ? baseUniq(array, baseIteratee(iteratee, 2)) : [];\n}\n\nmodule.exports = uniqBy;\n\n\n//# sourceURL=webpack://foot-print1/./node_modules/lodash/uniqBy.js?");
 
 /***/ }),
 
@@ -1084,7 +1614,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"catchInputElement\": () => (/* binding */ catchInputElement),\n/* harmony export */   \"getListElementcheckCurrentPathChange\": () => (/* binding */ getListElementcheckCurrentPathChange)\n/* harmony export */ });\n/* harmony import */ var lodash_isEmpty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/isEmpty */ \"./node_modules/lodash/isEmpty.js\");\n/* harmony import */ var lodash_isEmpty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_isEmpty__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var lodash_isNumber__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/isNumber */ \"./node_modules/lodash/isNumber.js\");\n/* harmony import */ var lodash_isNumber__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_isNumber__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/get */ \"./node_modules/lodash/get.js\");\n/* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_get__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../helper */ \"./src/helper.js\");\n/* harmony import */ var _const__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../const */ \"./src/const.js\");\n/* harmony import */ var _helperStorage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../helperStorage */ \"./src/helperStorage.js\");\n/* harmony import */ var _locallyLogic_jarvis__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../locallyLogic/jarvis */ \"./src/locallyLogic/jarvis.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n// ========form check input users========================================================================================================================================================================================\r\n// ================================================================================================================================================================================================\r\n// form check input users\r\n\r\nfunction saveInputForm(data) {\r\n  //save action history first\r\n  //  setNewTrackAction({ ...data, type: 'input' });\r\n  //\r\n  var listOfData = sessionStorage.getItem(_const__WEBPACK_IMPORTED_MODULE_4__.localKey2);\r\n  listOfData = JSON.parse(listOfData || \"[]\");\r\n  var { ele, ...data2 } = data;\r\n  var newDataTrackInput = [...listOfData, data2];\r\n  // filter same key value\r\n  newDataTrackInput = newDataTrackInput.filter(\r\n    (thing, i, self) => i === self.findIndex((t) => t.key == thing.key)\r\n  );\r\n  let getapplicationId = sessionStorage.getItem(_const__WEBPACK_IMPORTED_MODULE_4__.applicationId)\r\n\r\n  newDataTrackInput = newDataTrackInput.map(i=>({...i, appId: getapplicationId}))\r\n  sessionStorage.setItem(_const__WEBPACK_IMPORTED_MODULE_4__.localKey2, JSON.stringify(newDataTrackInput));\r\n}\r\n\r\nfunction focusElement(e) {\r\n  if (!e.isTrackedFocus) {\r\n    if (e.name === 'pin1') {\r\n      if (lodash_isEmpty__WEBPACK_IMPORTED_MODULE_0___default()(e.jarvisField)) {\r\n        e.jarvisField = (0,_locallyLogic_jarvis__WEBPACK_IMPORTED_MODULE_6__.jarvisField)(\r\n          e,\r\n          e.name\r\n        );\r\n      }\r\n    }\r\n    \r\n    e.addEventListener(\"focus\", (event) => {\r\n      // event.target.style.background = 'pink';\r\n      event.target.isTrackedFocus = true;\r\n      //save and get parent of components\r\n      if (lodash_isEmpty__WEBPACK_IMPORTED_MODULE_0___default()(event.target.trackingInput)) {\r\n        const nameItem = (0,_helper__WEBPACK_IMPORTED_MODULE_3__.getName)(event.target);\r\n        event.target.trackingInput = { displayName: nameItem.name };\r\n        event.target.parentTracking = nameItem.item;\r\n      }\r\n\r\n      event.target.timeStart = new Date().getTime();\r\n      event.target.focusTime = event.target.focusTime\r\n        ? event.target.focusTime + 1\r\n        : !event.target.focusTime;\r\n\r\n      if (lodash_isEmpty__WEBPACK_IMPORTED_MODULE_0___default()(event.target.jarvisField)) {\r\n        event.target.jarvisField = (0,_locallyLogic_jarvis__WEBPACK_IMPORTED_MODULE_6__.jarvisField)(\r\n          event.target,\r\n          event.target.trackingInput.displayName\r\n        );\r\n      }\r\n    });\r\n  }\r\n}\r\n\r\nfunction blurElement(e) {\r\n  if (!e.isTrackedBlur) {\r\n    e.addEventListener(\"blur\", (event) => {\r\n      let valueInput =\r\n        (0,_helper__WEBPACK_IMPORTED_MODULE_3__.getValue)(event.target) ||\r\n        (0,_helper__WEBPACK_IMPORTED_MODULE_3__.getVal)(\r\n          event.target,\r\n          \"parentElement.parentElement.firstElementChild.firstElementChild.innerHTML\"\r\n        );\r\n\r\n      // check same value isn't captured.\r\n      let oldValue = event?.target?.trackingInput?.valueInput;\r\n      event.target.isTrackedBlur = true;\r\n\r\n      event.target.trackingInput = {\r\n        // ele: event.target,\r\n        beginInput: event.target.timeStart,\r\n        endInput: new Date().getTime(),\r\n        totalInput: new Date().getTime() - event.target.timeStart,\r\n        valueInput: valueInput,\r\n        key: event.target.timeStart + valueInput,\r\n        displayName: (0,_helper__WEBPACK_IMPORTED_MODULE_3__.getName)(event.target)?.name,\r\n        html: event.target.outerHTML,\r\n        urlPath: location.pathname,\r\n        timezoneOffset: new Date().getTimezoneOffset(),\r\n        sessionId: sessionStorage.getItem(_const__WEBPACK_IMPORTED_MODULE_4__.sessionKeyUUID),\r\n      };\r\n\r\n      // for only jarvis\r\n      if (event.target.jarvisField && event.target.jarvisField.isDateTime) {\r\n        // valueInput\r\n        event.target.parentTracking.valueTrack = (0,_locallyLogic_jarvis__WEBPACK_IMPORTED_MODULE_6__.dateTimeCompose)(\r\n          lodash_get__WEBPACK_IMPORTED_MODULE_2___default()(event, \"target.trackingInput.valueInput\"),\r\n          lodash_get__WEBPACK_IMPORTED_MODULE_2___default()(event, \"target.parentTracking.valueTrack\"),\r\n          event.target.jarvisField.level,\r\n          event.target.jarvisField.isDateTime\r\n        );\r\n        event.target.trackingInput.valueInput =\r\n          event.target.parentTracking?.valueTrack;\r\n      }\r\n      if (event.target.jarvisField && event.target.jarvisField.isOTP) {\r\n        event.target.parentElement.valueTrack = (0,_locallyLogic_jarvis__WEBPACK_IMPORTED_MODULE_6__.otpCompose)(\r\n          lodash_get__WEBPACK_IMPORTED_MODULE_2___default()(event, \"target.trackingInput.valueInput\"),\r\n          lodash_get__WEBPACK_IMPORTED_MODULE_2___default()(event, \"target.parentElement.valueTrack\"),\r\n          event.target.jarvisField.level\r\n        );\r\n        event.target.trackingInput.valueInput =\r\n          event.target.parentElement?.valueTrack;\r\n      }\r\n\r\n      // event.target.style.background = '';\r\n      var saveTime = new Date().getTime() - event.target.timeStart;\r\n      event.target.timeSave = event.target.timeSave\r\n        ? event.target.timeSave + saveTime\r\n        : saveTime;\r\n\r\n      event.target.trackingInput.nameInput = checkTypeOfInput(\r\n        event.target,\r\n        event.target.trackingInput\r\n      );\r\n\r\n      //save to sessionStorage\r\n      if (event.target.trackingInput.valueInput !== oldValue) {\r\n        saveInputForm(event.target.trackingInput);\r\n      }\r\n      // cehck input before combine to value\r\n      // console.log(\"track i\");\r\n    });\r\n  }\r\n}\r\n\r\nfunction checkingElement(myForm) {\r\n  for (let i = 0; i < myForm.length; i++) {\r\n    focusElement(myForm[i]);\r\n    blurElement(myForm[i])\r\n  }\r\n}\r\n\r\nfunction addEventList(MOUNT_NODE) {\r\n  var myForm1 = MOUNT_NODE.getElementsByTagName(\"input\");\r\n  var myForm2 = MOUNT_NODE.getElementsByTagName(\"select\");\r\n  var myForm3 = MOUNT_NODE.getElementsByTagName(\"textarea\");\r\n  checkingElement(myForm1);\r\n  checkingElement(myForm2);\r\n  checkingElement(myForm3);\r\n\r\n  //jarvis custom action\r\n  (0,_locallyLogic_jarvis__WEBPACK_IMPORTED_MODULE_6__.bindCustomAction)(MOUNT_NODE);\r\n}\r\n\r\nfunction catchInputElement(MOUNT_NODE) {\r\n  // when change route\r\n  let countMouseMove = 0;\r\n  let countMouseClick = 0;\r\n  let countontouchstart = 0;\r\n  let onkeypress = 0;\r\n  //when users move mouse\r\n  MOUNT_NODE.onkeypress = function myFunction(e) {\r\n    if (!countontouchstart) {\r\n      // console.log(\r\n      //   \"onkeypress onkeypress onkeypressonkeypress onkeypress onkeypress onkeypress onkeypress\"\r\n      // ,e.target);\r\n      focusElement(e.target)\r\n      blurElement(e.target)\r\n      \r\n      addEventList(MOUNT_NODE);\r\n    }\r\n    onkeypress++;\r\n  };\r\n  MOUNT_NODE.countontouchstart = function myFunction(e) {\r\n    if (!countontouchstart) {\r\n      // console.log(\r\n      //   \"countontouchstart countontouchstart countontouchstart countontouchstart countontouchstart\"\r\n      // );\r\n      addEventList(MOUNT_NODE);\r\n    }\r\n    countontouchstart++;\r\n  };\r\n  MOUNT_NODE.onmousemove = function myFunction(e) {\r\n    if (!countMouseMove) {\r\n      // console.log(\r\n      //   \"mouse move mouse move mouse movemouse movemouse movemouse move mouse move\"\r\n      // );\r\n      addEventList(MOUNT_NODE);\r\n    }\r\n    countMouseMove++;\r\n  };\r\n  MOUNT_NODE.onclick = function myFunction(e) {\r\n    if (!countMouseClick) {\r\n      // console.log(\r\n      //   \"mouse onclick = mouse onclick =mouse onclick =mouse onclick =mouse onclick =mouse onclick \"\r\n      // );\r\n      addEventList(MOUNT_NODE);\r\n    }\r\n    countMouseClick++;\r\n  };\r\n\r\n  setInterval(() => {\r\n    var historyTrack = JSON.parse(sessionStorage.getItem(_const__WEBPACK_IMPORTED_MODULE_4__.localKey));\r\n    if ((0,_helperStorage__WEBPACK_IMPORTED_MODULE_5__.isChangeRouteCheck)()) {\r\n      addEventList(MOUNT_NODE);\r\n      // var myForm1 = MOUNT_NODE.getElementsByTagName('input');\r\n      // var myForm2 = MOUNT_NODE.getElementsByTagName('select');\r\n      // var myForm3 = MOUNT_NODE.getElementsByTagName('textarea');\r\n      // checkingElement(myForm1);\r\n      // checkingElement(myForm2);\r\n      // checkingElement(myForm3);\r\n    }\r\n  }, 600);\r\n}\r\n\r\n// for react csr\r\nfunction checkCurrentPathChange(myForm, MOUNT_NODE) {\r\n  for (let i = 0; i < myForm.length; i++) {\r\n    myForm[i].addEventListener(\"focus\", (event) => {\r\n      if (_const__WEBPACK_IMPORTED_MODULE_4__.currentPath !== window.location.pathname) {\r\n        //if it isn't same path\r\n        checkingElement(MOUNT_NODE);\r\n        _const__WEBPACK_IMPORTED_MODULE_4__.currentPath = window.location.pathname;\r\n      }\r\n    });\r\n\r\n    myForm[i].addEventListener(\"blur\", (event) => {\r\n      // event.target.style.background = '';\r\n      if (_const__WEBPACK_IMPORTED_MODULE_4__.currentPath !== window.location.pathname) {\r\n        checkingElement(MOUNT_NODE);\r\n        _const__WEBPACK_IMPORTED_MODULE_4__.currentPath = window.location.pathname;\r\n      }\r\n    });\r\n  }\r\n}\r\n\r\nfunction getListElementcheckCurrentPathChange(MOUNT_NODE) {\r\n  var myForm1 = MOUNT_NODE.getElementsByTagName(\"input\");\r\n  var myForm2 = MOUNT_NODE.getElementsByTagName(\"select\");\r\n  var myForm3 = MOUNT_NODE.getElementsByTagName(\"textarea\");\r\n  // debugger;\r\n  checkCurrentPathChange(myForm1, MOUNT_NODE);\r\n  checkCurrentPathChange(myForm2, MOUNT_NODE);\r\n  checkCurrentPathChange(myForm3, MOUNT_NODE);\r\n}\r\n\n\n//# sourceURL=webpack://foot-print1/./src/action/inputPrint.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"catchInputElement\": () => (/* binding */ catchInputElement),\n/* harmony export */   \"getListElementcheckCurrentPathChange\": () => (/* binding */ getListElementcheckCurrentPathChange)\n/* harmony export */ });\n/* harmony import */ var lodash_isEmpty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/isEmpty */ \"./node_modules/lodash/isEmpty.js\");\n/* harmony import */ var lodash_isEmpty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_isEmpty__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var lodash_isNumber__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/isNumber */ \"./node_modules/lodash/isNumber.js\");\n/* harmony import */ var lodash_isNumber__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_isNumber__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/get */ \"./node_modules/lodash/get.js\");\n/* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_get__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../helper */ \"./src/helper.js\");\n/* harmony import */ var _const__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../const */ \"./src/const.js\");\n/* harmony import */ var _helperStorage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../helperStorage */ \"./src/helperStorage.js\");\n/* harmony import */ var _combineTrackValue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../combineTrackValue */ \"./src/combineTrackValue.js\");\n/* harmony import */ var _locallyLogic_jarvis__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../locallyLogic/jarvis */ \"./src/locallyLogic/jarvis.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n// ========form check input users========================================================================================================================================================================================\r\n// ================================================================================================================================================================================================\r\n// form check input users\r\n\r\nfunction saveInputForm(data) {\r\n  //save action history first\r\n  //  setNewTrackAction({ ...data, type: 'input' });\r\n  //\r\n  var listOfData = sessionStorage.getItem(_const__WEBPACK_IMPORTED_MODULE_4__.localKey2);\r\n  listOfData = JSON.parse(listOfData || \"[]\");\r\n  var { ele, ...data2 } = data;\r\n  var newDataTrackInput = [...listOfData, data2];\r\n  // filter same key value\r\n  newDataTrackInput = newDataTrackInput.filter(\r\n    (thing, i, self) => i === self.findIndex((t) => t.key == thing.key)\r\n  );\r\n  let getapplicationId = sessionStorage.getItem(_const__WEBPACK_IMPORTED_MODULE_4__.applicationId)\r\n\r\n  newDataTrackInput = newDataTrackInput.map(i=>({...i, appId: getapplicationId}))\r\n  sessionStorage.setItem(_const__WEBPACK_IMPORTED_MODULE_4__.localKey2, JSON.stringify(newDataTrackInput));\r\n}\r\n\r\nfunction focusElement(e) {\r\n  if (!e.isTrackedFocus) {\r\n    if (e.name === 'pin1') {\r\n      if (lodash_isEmpty__WEBPACK_IMPORTED_MODULE_0___default()(e.jarvisField)) {\r\n        e.jarvisField = (0,_locallyLogic_jarvis__WEBPACK_IMPORTED_MODULE_7__.jarvisField)(\r\n          e,\r\n          e.name\r\n        );\r\n      }\r\n    }\r\n    \r\n    e.addEventListener(\"focus\", (event) => {\r\n      // event.target.style.background = 'pink';\r\n      event.target.isTrackedFocus = true;\r\n      //save and get parent of components\r\n      if (lodash_isEmpty__WEBPACK_IMPORTED_MODULE_0___default()(event.target.trackingInput)) {\r\n        const nameItem = (0,_helper__WEBPACK_IMPORTED_MODULE_3__.getName)(event.target);\r\n        event.target.trackingInput = { displayName: nameItem.name };\r\n        event.target.parentTracking = nameItem.item;\r\n      }\r\n\r\n      event.target.timeStart = new Date().getTime();\r\n      event.target.focusTime = event.target.focusTime\r\n        ? event.target.focusTime + 1\r\n        : !event.target.focusTime;\r\n\r\n      if (lodash_isEmpty__WEBPACK_IMPORTED_MODULE_0___default()(event.target.jarvisField)) {\r\n        event.target.jarvisField = (0,_locallyLogic_jarvis__WEBPACK_IMPORTED_MODULE_7__.jarvisField)(\r\n          event.target,\r\n          event.target.trackingInput.displayName\r\n        );\r\n      }\r\n    });\r\n  }\r\n}\r\n\r\nfunction blurElement(e) {\r\n  if (!e.isTrackedBlur) {\r\n    e.addEventListener(\"blur\", (event) => {\r\n      let valueInput =\r\n        (0,_helper__WEBPACK_IMPORTED_MODULE_3__.getValue)(event.target) ||\r\n        (0,_helper__WEBPACK_IMPORTED_MODULE_3__.getVal)(\r\n          event.target,\r\n          \"parentElement.parentElement.firstElementChild.firstElementChild.innerHTML\"\r\n        );\r\n\r\n      // check same value isn't captured.\r\n      let oldValue = event?.target?.trackingInput?.valueInput;\r\n      event.target.isTrackedBlur = true;\r\n\r\n      event.target.trackingInput = {\r\n        // ele: event.target,\r\n        beginInput: event.target.timeStart,\r\n        endInput: new Date().getTime(),\r\n        totalInput: new Date().getTime() - event.target.timeStart,\r\n        valueInput: valueInput,\r\n        key: event.target.timeStart + valueInput,\r\n        displayName: (0,_helper__WEBPACK_IMPORTED_MODULE_3__.getName)(event.target)?.name,\r\n        html: event.target.outerHTML,\r\n        urlPath: location.pathname,\r\n        timezoneOffset: new Date().getTimezoneOffset(),\r\n        sessionId: sessionStorage.getItem(_const__WEBPACK_IMPORTED_MODULE_4__.sessionKeyUUID),\r\n      };\r\n\r\n      // for only jarvis\r\n      if (event.target.jarvisField && event.target.jarvisField.isDateTime) {\r\n        // valueInput\r\n        event.target.parentTracking.valueTrack = (0,_locallyLogic_jarvis__WEBPACK_IMPORTED_MODULE_7__.dateTimeCompose)(\r\n          lodash_get__WEBPACK_IMPORTED_MODULE_2___default()(event, \"target.trackingInput.valueInput\"),\r\n          lodash_get__WEBPACK_IMPORTED_MODULE_2___default()(event, \"target.parentTracking.valueTrack\"),\r\n          event.target.jarvisField.level,\r\n          event.target.jarvisField.isDateTime\r\n        );\r\n        event.target.trackingInput.valueInput =\r\n          event.target.parentTracking?.valueTrack;\r\n      }\r\n      if (event.target.jarvisField && event.target.jarvisField.isOTP) {\r\n        event.target.parentElement.valueTrack = (0,_locallyLogic_jarvis__WEBPACK_IMPORTED_MODULE_7__.otpCompose)(\r\n          lodash_get__WEBPACK_IMPORTED_MODULE_2___default()(event, \"target.trackingInput.valueInput\"),\r\n          lodash_get__WEBPACK_IMPORTED_MODULE_2___default()(event, \"target.parentElement.valueTrack\"),\r\n          event.target.jarvisField.level\r\n        );\r\n        event.target.trackingInput.valueInput =\r\n          event.target.parentElement?.valueTrack;\r\n      }\r\n\r\n      // event.target.style.background = '';\r\n      var saveTime = new Date().getTime() - event.target.timeStart;\r\n      event.target.timeSave = event.target.timeSave\r\n        ? event.target.timeSave + saveTime\r\n        : saveTime;\r\n\r\n      event.target.trackingInput.nameInput = (0,_combineTrackValue__WEBPACK_IMPORTED_MODULE_6__.checkTypeOfInput)(\r\n        event.target,\r\n        event.target.trackingInput\r\n      );\r\n\r\n      //save to sessionStorage\r\n      if (event.target.trackingInput.valueInput !== oldValue) {\r\n        saveInputForm(event.target.trackingInput);\r\n      }\r\n      // cehck input before combine to value\r\n      // console.log(\"track i\");\r\n    });\r\n  }\r\n}\r\n\r\nfunction checkingElement(myForm) {\r\n  for (let i = 0; i < myForm.length; i++) {\r\n    focusElement(myForm[i]);\r\n    blurElement(myForm[i])\r\n  }\r\n}\r\n\r\nfunction addEventList(MOUNT_NODE) {\r\n  var myForm1 = MOUNT_NODE.getElementsByTagName(\"input\");\r\n  var myForm2 = MOUNT_NODE.getElementsByTagName(\"select\");\r\n  var myForm3 = MOUNT_NODE.getElementsByTagName(\"textarea\");\r\n  checkingElement(myForm1);\r\n  checkingElement(myForm2);\r\n  checkingElement(myForm3);\r\n\r\n  //jarvis custom action\r\n  (0,_locallyLogic_jarvis__WEBPACK_IMPORTED_MODULE_7__.bindCustomAction)(MOUNT_NODE);\r\n}\r\n\r\nfunction catchInputElement(MOUNT_NODE) {\r\n  // when change route\r\n  let countMouseMove = 0;\r\n  let countMouseClick = 0;\r\n  let countontouchstart = 0;\r\n  let onkeypress = 0;\r\n  //when users move mouse\r\n  MOUNT_NODE.onkeypress = function myFunction(e) {\r\n    if (!countontouchstart) {\r\n      // console.log(\r\n      //   \"onkeypress onkeypress onkeypressonkeypress onkeypress onkeypress onkeypress onkeypress\"\r\n      // ,e.target);\r\n      focusElement(e.target)\r\n      blurElement(e.target)\r\n      \r\n      addEventList(MOUNT_NODE);\r\n    }\r\n    onkeypress++;\r\n  };\r\n  MOUNT_NODE.countontouchstart = function myFunction(e) {\r\n    if (!countontouchstart) {\r\n      // console.log(\r\n      //   \"countontouchstart countontouchstart countontouchstart countontouchstart countontouchstart\"\r\n      // );\r\n      addEventList(MOUNT_NODE);\r\n    }\r\n    countontouchstart++;\r\n  };\r\n  MOUNT_NODE.onmousemove = function myFunction(e) {\r\n    if (!countMouseMove) {\r\n      // console.log(\r\n      //   \"mouse move mouse move mouse movemouse movemouse movemouse move mouse move\"\r\n      // );\r\n      addEventList(MOUNT_NODE);\r\n    }\r\n    countMouseMove++;\r\n  };\r\n  MOUNT_NODE.onclick = function myFunction(e) {\r\n    if (!countMouseClick) {\r\n      // console.log(\r\n      //   \"mouse onclick = mouse onclick =mouse onclick =mouse onclick =mouse onclick =mouse onclick \"\r\n      // );\r\n      addEventList(MOUNT_NODE);\r\n    }\r\n    countMouseClick++;\r\n  };\r\n\r\n  setInterval(() => {\r\n    var historyTrack = JSON.parse(sessionStorage.getItem(_const__WEBPACK_IMPORTED_MODULE_4__.localKey));\r\n    if ((0,_helperStorage__WEBPACK_IMPORTED_MODULE_5__.isChangeRouteCheck)()) {\r\n      addEventList(MOUNT_NODE);\r\n      // var myForm1 = MOUNT_NODE.getElementsByTagName('input');\r\n      // var myForm2 = MOUNT_NODE.getElementsByTagName('select');\r\n      // var myForm3 = MOUNT_NODE.getElementsByTagName('textarea');\r\n      // checkingElement(myForm1);\r\n      // checkingElement(myForm2);\r\n      // checkingElement(myForm3);\r\n    }\r\n  }, 600);\r\n}\r\n\r\n// for react csr\r\nfunction checkCurrentPathChange(myForm, MOUNT_NODE) {\r\n  for (let i = 0; i < myForm.length; i++) {\r\n    myForm[i].addEventListener(\"focus\", (event) => {\r\n      if (_const__WEBPACK_IMPORTED_MODULE_4__.currentPath !== window.location.pathname) {\r\n        //if it isn't same path\r\n        checkingElement(MOUNT_NODE);\r\n        _const__WEBPACK_IMPORTED_MODULE_4__.currentPath = window.location.pathname;\r\n      }\r\n    });\r\n\r\n    myForm[i].addEventListener(\"blur\", (event) => {\r\n      // event.target.style.background = '';\r\n      if (_const__WEBPACK_IMPORTED_MODULE_4__.currentPath !== window.location.pathname) {\r\n        checkingElement(MOUNT_NODE);\r\n        _const__WEBPACK_IMPORTED_MODULE_4__.currentPath = window.location.pathname;\r\n      }\r\n    });\r\n  }\r\n}\r\n\r\nfunction getListElementcheckCurrentPathChange(MOUNT_NODE) {\r\n  var myForm1 = MOUNT_NODE.getElementsByTagName(\"input\");\r\n  var myForm2 = MOUNT_NODE.getElementsByTagName(\"select\");\r\n  var myForm3 = MOUNT_NODE.getElementsByTagName(\"textarea\");\r\n  // debugger;\r\n  checkCurrentPathChange(myForm1, MOUNT_NODE);\r\n  checkCurrentPathChange(myForm2, MOUNT_NODE);\r\n  checkCurrentPathChange(myForm3, MOUNT_NODE);\r\n}\r\n\n\n//# sourceURL=webpack://foot-print1/./src/action/inputPrint.js?");
 
 /***/ }),
 
@@ -1118,6 +1648,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"apiList\": () => (/* binding */ apiList),\n/* harmony export */   \"landing\": () => (/* binding */ landing),\n/* harmony export */   \"personal\": () => (/* binding */ personal),\n/* harmony export */   \"nonPersonal\": () => (/* binding */ nonPersonal),\n/* harmony export */   \"juicyGetScore\": () => (/* binding */ juicyGetScore)\n/* harmony export */ });\n/* harmony import */ var _request__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./request */ \"./src/request.js\");\n/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helper */ \"./src/helper.js\");\n\r\n\r\n\r\n\r\n// import { GET_TODO_LIST, GET_DASHBOARD_STATISTIC, TOKEN_KEY } from './const';\r\nconst apiList = {\r\n  landing: '/data-gathering/save-landing',\r\n  nonPersonal: '/data-gathering/save-non-personal-data',\r\n  personal: '/data-gathering/save-personal-data',\r\n  juicyScore: '/juicy-score/get-score/',\r\n};\r\n\r\n// export const getToken = () => {\r\n//   if (process.browser) {\r\n//     // client-side-only\r\n//     // return storage.getItem(TOKEN_KEY);\r\n//   } else return;\r\n// };\r\nconst landing = payload => {\r\n  const appId = (0,_helper__WEBPACK_IMPORTED_MODULE_1__.getApplicationId)();\r\n  return (0,_request__WEBPACK_IMPORTED_MODULE_0__.post)({\r\n    url: apiList.landing,\r\n    data: {...payload, appId},\r\n    apiName: 'landing',\r\n  });\r\n};\r\n\r\nconst personal = payload => {\r\n  return (0,_request__WEBPACK_IMPORTED_MODULE_0__.post)({\r\n    url: apiList.personal,\r\n    data: payload,\r\n    apiName: 'personal',\r\n  });\r\n};\r\n\r\nconst nonPersonal = payload => {\r\n  // payload = {\r\n  //   \"source\":\"SOURCE\",\r\n  //   \"campaign\":\"campaign\",\r\n  //   \"utmSource\":\"utmSource\",\r\n  //   \"utmMedium\":\"utmMedium\",\r\n  //   \"utmCampaign\":\"utmCampaign\",\r\n  //   \"utmTerm\":\"utmTerm\",\r\n  //   \"utmContent\":\"utmContent\",\r\n  //   \"browser\":\"CHORME\",\r\n  //   \"userAgent\":\"USER AGENT\",\r\n  //   \"ipAddress\":\"192.168.0.1\",\r\n  //   \"latitude\":\"105\",\r\n  //   \"longitude\":\"106\",\r\n  //   \"typeofDevice\":\"MOBILE\",\r\n  //   \"operatingSystem\":\"WINDOS 7\",\r\n  //   \"screenWidth\":\"1024\",\r\n  //   \"screenHeight\":\"768\",\r\n  //   \"sessionId\":\"2323132\",\r\n  //   \"phoneNumber\":\"0932222222\"\r\n  // }\r\n  return (0,_request__WEBPACK_IMPORTED_MODULE_0__.post)({\r\n    url: apiList.nonPersonal,\r\n    data: payload,\r\n    apiName: 'nonPersonal',\r\n  });\r\n};\r\n\r\n// body personal data\r\n// [\r\n//   {\r\n//     \"displayName\":\"so dien thoai\",\r\n//     \"valueInput\":\"0975705499\",\r\n//     \"nameInput\":\"sdt\",\r\n//     \"totalInput\":2,\r\n//     \"beginInput\":\"1\",\r\n//     \"endInput\":\"2\",\r\n//     \"orderInput\":1,\r\n//     \"urlPath\":\"vnexpress.net\",\r\n//     \"phoneNumber\":\"0975705488\",\r\n//     \"sessionId\":\"222222\"\r\n//   }\r\n//   ]\r\n\r\n// account_id=VPBank_VN_test&client_id=124&channel=SITE&time_utc3=15.10.2019&session_id=w.20211229030237c773ff8f-6853-11ec-87d4-52fc5b7db3a3.A_GS&version=13\r\nconst juicyGetScore = ({ s, appId }) => {\r\n  return (0,_request__WEBPACK_IMPORTED_MODULE_0__.get)({\r\n    url: apiList.juicyScore,\r\n    params: { session_id: s, appId }\r\n  })\r\n}\n\n//# sourceURL=webpack://foot-print1/./src/api.js?");
+
+/***/ }),
+
+/***/ "./src/combineTrackValue.js":
+/*!**********************************!*\
+  !*** ./src/combineTrackValue.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"coreObj\": () => (/* binding */ coreObj),\n/* harmony export */   \"checkTypeOfInput\": () => (/* binding */ checkTypeOfInput),\n/* harmony export */   \"savelocalObjectAction\": () => (/* binding */ savelocalObjectAction)\n/* harmony export */ });\n/* harmony import */ var lodash_uniqBy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/uniqBy */ \"./node_modules/lodash/uniqBy.js\");\n/* harmony import */ var lodash_uniqBy__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_uniqBy__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _const__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./const */ \"./src/const.js\");\n/* harmony import */ var _librariesValid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./librariesValid */ \"./src/librariesValid.js\");\n\r\n\r\n\r\nclass coreObj {\r\n    constructor({value, start, end, totalTime, path, name}) {\r\n        this.value = value;\r\n        this.start = start;\r\n        this.end = end;\r\n        this.totalTime = totalTime;\r\n        this.path = path;\r\n        this.name = name;\r\n    }\r\n} \r\n\r\n// class localObjectTrack {\r\n//     constructor() {\r\n//         this.phoneNumber = [];\r\n//     }\r\n//     constructor(phoneNumber) {\r\n//         this.phoneNumber = phoneNumber;\r\n//     }\r\n// }\r\n\r\nconst checkTypeOfInput = (element, value) => {\r\n    // saveInputForm\r\n    const nameField = (0,_librariesValid__WEBPACK_IMPORTED_MODULE_2__.whichElementIs)(element)\r\n    if (nameField) {\r\n        savelocalObjectAction(value, nameField)\r\n        return nameField\r\n    }\r\n    return null\r\n}\r\n\r\n// content : { phoneNumber : new coreObj(value, start, end, totalTime, path, name) }\r\nconst savelocalObjectAction  = (content, nameField) => {\r\n    // keyFootPrintStorage\r\n    sessionStorage.setItem(_const__WEBPACK_IMPORTED_MODULE_1__.keyFootPrintStorage+nameField, content);\r\n\r\n    // let old = sessionStorage.getItem(localObjectCombineActionKey) || `{}`;\r\n    // old = JSON.parse(old)\r\n    // if (old[nameField] && old[nameField][0]) {\r\n    //     old[nameField].push(content)\r\n    //     //uniqBy\r\n    //     old[nameField] = uniqBy(old[nameField], 'start')\r\n    //     sessionStorage.setItem(localObjectCombineActionKey, JSON.stringify(old))\r\n    // }\r\n    // else {\r\n    //     sessionStorage.setItem(localObjectCombineActionKey, JSON.stringify({...old, [nameField]: [content]}))\r\n    // }\r\n}\n\n//# sourceURL=webpack://foot-print1/./src/combineTrackValue.js?");
 
 /***/ }),
 
@@ -1162,6 +1703,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _action_mouseMove__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./action/mouseMove */ \"./src/action/mouseMove.js\");\n/* harmony import */ var _action_inputPrint__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./action/inputPrint */ \"./src/action/inputPrint.js\");\n/* harmony import */ var _action_routeHistory__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./action/routeHistory */ \"./src/action/routeHistory.js\");\n/* harmony import */ var _action_firsttimePageCaptureSystem__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./action/firsttimePageCaptureSystem */ \"./src/action/firsttimePageCaptureSystem.js\");\n/* harmony import */ var _makeRequest__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./makeRequest */ \"./src/makeRequest.js\");\n/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./helper */ \"./src/helper.js\");\n/* harmony import */ var _const__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./const */ \"./src/const.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n// last click and last active on that page\r\n// setInterval to catch route change and save time start with each route\r\n// current route is undefined or last active(\"click\" and \"mouseleave\") time is null\r\n// restart setInterval check route change when last action has already done.\r\n// if not -> remove setInterval, if thats true save start and end time with path and save new path and start time\r\n\r\n\r\n\r\nconst historyTrack = (MOUNT_NODE) => {\r\n    var historyTrack = sessionStorage.getItem(_const__WEBPACK_IMPORTED_MODULE_6__.localKey);\r\n    document.getElementsByTagName('body')[0].addEventListener('mouseleave', e => {\r\n      const trackingRange = setInterval(() => {\r\n        (0,_action_routeHistory__WEBPACK_IMPORTED_MODULE_2__.trackingInterval)(trackingRange);\r\n        //track change route \r\n        if (historyTrack && historyTrack.currentPath != location.pathname) {\r\n          // console.log(\"===================change route====================================\");\r\n        }\r\n      }, 500);\r\n    });\r\n    \r\n    document.getElementsByTagName('body')[0].addEventListener('mouseleave', e => {\r\n      const trackingRange = setInterval(() => {\r\n        (0,_action_routeHistory__WEBPACK_IMPORTED_MODULE_2__.trackingInterval)(trackingRange);\r\n        //track change route \r\n        if (historyTrack && historyTrack.currentPath != location.pathname) {\r\n          // console.log(\"========================change route====================================\");\r\n\r\n        }\r\n      }, 500);\r\n    });\r\n  \r\n    document.getElementsByTagName('body')[0].addEventListener('click', e => {\r\n      const trackingRange = setInterval(() => {\r\n        (0,_action_routeHistory__WEBPACK_IMPORTED_MODULE_2__.trackingInterval)(trackingRange);\r\n        //track change route \r\n        if (historyTrack && historyTrack.currentPath != location.pathname) {\r\n          // console.log(\"===================change route====================================\");\r\n        }\r\n      }, 500);\r\n    });\r\n  \r\n    const trackingRange = setInterval(() => {\r\n      (0,_action_routeHistory__WEBPACK_IMPORTED_MODULE_2__.trackingInterval)(trackingRange);\r\n      //track change route \r\n      if (historyTrack && historyTrack.currentPath != location.pathname) {\r\n        // console.log(\"===================change route====================================\");\r\n      }\r\n    }, 500);\r\n    \r\n    // MOUNT_NODE.onkeypress = function myFunction(e) {\r\n    //   if (!countontouchstart) {\r\n    //     console.log(\r\n    //       \"countontouchstart countontouchstart countontouchstart countontouchstart countontouchstart\"\r\n    //     );\r\n    //     addEventList(MOUNT_NODE);\r\n    //   }\r\n    //   countontouchstart++;\r\n    // };\r\n  //tracking route change\r\n  // trackingInterval();\r\n  // tracking route is stucked\r\n  // routeStuck()\r\n}\r\n\r\n// global func attact to dom\r\nconst routeCheckInputUsers = (MOUNT_NODE) => {\r\n  if (MOUNT_NODE && MOUNT_NODE.getElementsByTagName) {\r\n    var excuteTime = 0;\r\n    const intervalAfterRender = setInterval(() => {\r\n      excuteTime++;\r\n      if (excuteTime >= 2) {\r\n        clearInterval(intervalAfterRender);\r\n      }\r\n      console.log(\"footprint track is on!!\");\r\n      (0,_action_firsttimePageCaptureSystem__WEBPACK_IMPORTED_MODULE_3__.captureSysInfo)();\r\n      // route history track\r\n      historyTrack(MOUNT_NODE);\r\n      (0,_action_routeHistory__WEBPACK_IMPORTED_MODULE_2__.historyTrackDetail)(MOUNT_NODE)\r\n      // =============================\r\n      ;(0,_action_inputPrint__WEBPACK_IMPORTED_MODULE_1__.catchInputElement)(MOUNT_NODE);\r\n      // getListElementcheckCurrentPathChange(MOUNT_NODE);\r\n      // trackMouse(MOUNT_NODE);\r\n\r\n      // track firsttime open page, capture system and utm\r\n    }, 2000);\r\n  }\r\n};\r\n\r\n// load 3th party js\r\n(0,_helper__WEBPACK_IMPORTED_MODULE_5__.loadJs)(_const__WEBPACK_IMPORTED_MODULE_6__.juicySDK);\r\nrouteCheckInputUsers(document.body);\r\n(0,_makeRequest__WEBPACK_IMPORTED_MODULE_4__.personalRequest)();\r\n\r\n// window.juicyScoreApi.getSessionId().then(function (s) {\r\n//   console.log(\"Session from getSessionId()\", s);\r\n// });\r\n\n\n//# sourceURL=webpack://foot-print1/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/librariesValid.js":
+/*!*******************************!*\
+  !*** ./src/librariesValid.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"whichElementIs\": () => (/* binding */ whichElementIs)\n/* harmony export */ });\nconst libraries = {\r\n    phoneNumber: /phone|mobile|ĐIỆN THOẠI/gi\r\n}\r\nconst whichElementIs =  (element) => {\r\n    // element html\r\n        // ex: `<input type=\"number\" name=\"mobile.phoneNumber\" value=\"321311231\" class=\"clearBorderInputPhone\" id=\"phoneNumber\" placeholder=\"SỐ ĐIỆN THOẠI\" maxlength=\"15\">`\r\n        if (libraries.phoneNumber.test(element.name) || libraries.phoneNumber.test(element.placeholder)) return 'phoneNumber'\r\n}\n\n//# sourceURL=webpack://foot-print1/./src/librariesValid.js?");
 
 /***/ }),
 
